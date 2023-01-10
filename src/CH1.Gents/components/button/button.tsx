@@ -1,6 +1,6 @@
 import './button.css';
 
-type ButtonLabel = 'Select all' | 'Deselect all';
+export type ButtonLabel = 'Select all' | 'Deselect all';
 
 export function Button({
   label,
