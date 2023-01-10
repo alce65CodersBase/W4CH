@@ -16,7 +16,6 @@ export function App() {
 
   useEffect(() => {
     setGents(findGents());
-    setNumberOfSelected(gents.filter((item) => item.selected === true).length);
   }, []);
 
   useEffect(() => {
