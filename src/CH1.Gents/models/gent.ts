@@ -1,4 +1,4 @@
-export type Gent = {
+export type GentStructure = {
   id: number;
   name: string;
   status: string;
@@ -6,5 +6,5 @@ export type Gent = {
   twitter: string;
   picture: string;
   alternativeText: string;
-  selected: true;
+  selected: boolean;
 };
