@@ -141,7 +141,7 @@ export default {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
   testPathIgnorePatterns: ['dist'],
-  resolver: 'jest-ts-webcompat-resolver'
+  resolver: 'jest-ts-webcompat-resolver',
 };
 ```
 
@@ -189,6 +189,7 @@ module.exports = 'assetsURL';
 - SonarCloud
 
 - Modificamos la configuración del repo
+
   - creamos la rama de trabajo: feature/config
   - instalamos Husky
 
@@ -202,6 +203,7 @@ module.exports = 'assetsURL';
     - comprobamos su efecto: mensajes y nombre de rama
     - con el primer commit, publicamos la rama
     - opcionalmente creamos la PR
+
   - añadimos GitHub Actions: audit
     - carpeta .github/workflows
     - copiamos audit.yml
@@ -225,7 +227,6 @@ module.exports = 'assetsURL';
     - comprobamos la validez da la PR cada vez que se actualiza
     - mergeamos la PR al finalizar, con todos los checks correctos
     - eliminamos la PR, al menos en GitHub
-
 
 #### GitHub Action de testing
 
