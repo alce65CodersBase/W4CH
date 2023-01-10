@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #b08e76;
+  /* overflow: hidden; */
+  min-width: 35rem;
+}
+
+header {
+  padding-inline: 1rem;
+  display: flex;
+  justify-content: space-between;
+}

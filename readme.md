@@ -175,7 +175,12 @@ module.exports = 'assetsURL';
 - creamos el repo
 - initial commit (sin React + Vite sample)
 - conectamos a GitHub
-- protegemos la rama: Require a pull request before merging
+- protegemos la rama:
+  - Require a pull request before merging
+  - Do not allow bypassing the above settings
+- preparamos el repo para SonarCloud
+  - lo incorporamos en la página de Sonar
+  - añadimos Secret en GitHub
 
 #### Configuración: rama feature/config
 
@@ -185,7 +190,15 @@ module.exports = 'assetsURL';
 
 - Modificamos la configuración del repo
   - creamos la rama de trabajo: feature/config
-  - añadimos huskies: commit-msg y pre-push
+  - instalamos Husky
+
+    ```shell
+    npm i -D husky
+    npx husky install
+    npm pkg set scripts.prepare="husky install"
+    ```
+
+    - añadimos huskies: commit-msg y pre-push
     - comprobamos su efecto: mensajes y nombre de rama
     - con el primer commit, publicamos la rama
     - opcionalmente creamos la PR
@@ -195,10 +208,9 @@ module.exports = 'assetsURL';
       - `npx eclint check` comprueba la validez de editorconfig
       - comprobar node_modules en gitignore
   - añadimos SonarCloud al repo
-    - lo incorporamos en la página de Sonar
-    - añadimos Secret en GitHub
     - añadimos workflow sonar.yml
     - creamos sonar-project.properties
+
 - Trabajamos en el repo
   - si no existía, creamos la PR de la feature/config
     - en la propia PR se comprueban las GitHub actions
