@@ -1,8 +1,11 @@
-export function Info() {
+/* global JSX */
+import './info.css';
+
+export function Info({ children }: { children: JSX.Element }) {
   return (
     <section className="controls" aria-label="info">
       <p className="info">0 gentlemen pointing at you</p>
-      <button className="button button--select">Select all</button>
+      {children}
     </section>
   );
 }

@@ -1,19 +1,15 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { Info } from './info';
+import { Button } from './button';
 
-describe('Given Info component', () => {
+describe('Given Button component', () => {
   beforeEach(() => {
-    render(
-      <Info>
-        <></>
-      </Info>
-    );
+    render(<Button></Button>);
   });
   describe('When it has been rendered', () => {
     test('Then it should be on the screen', () => {
-      const componentInfo = screen.getByRole('region');
-      expect(componentInfo).toBeInTheDocument();
+      const componentButton = screen.getByRole('button');
+      expect(componentButton).toBeInTheDocument();
     });
   });
 });
