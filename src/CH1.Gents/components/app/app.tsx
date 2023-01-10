@@ -1,7 +1,9 @@
+import { Header } from '../header/header';
+
 export function App() {
   return (
-    <div className="App">
-      <h1>CH1 Gents</h1>
+    <div className="App container">
+      <Header></Header>
     </div>
   );
 }
