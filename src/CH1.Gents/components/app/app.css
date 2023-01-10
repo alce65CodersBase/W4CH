@@ -1,0 +1,10 @@
+.app-container {
+  background-color: var(--background-main-color);
+  width: 800px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 20px;
+}
+.main {
+  padding-top: 20px;
+}
