@@ -16,6 +16,7 @@ export function Icon({
     <i
       className={classTemplates[type]}
       role="button"
+      aria-label={type}
       onClick={() => handleChanges(type)}
     ></i>
   );

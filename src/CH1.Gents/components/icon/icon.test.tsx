@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Icon } from './icon';
 
 describe('Given Icon component', () => {
@@ -11,6 +12,11 @@ describe('Given Icon component', () => {
     test('Then it should be on the screen', () => {
       const componentIcon = screen.getByRole('button');
       expect(componentIcon).toBeInTheDocument();
+    });
+    test('Then it could be used to call handleChanges', async () => {
+      const componentIcon = screen.getByRole('button');
+      await userEvent.click(componentIcon);
+      expect(handleChanges).toHaveBeenCalled();
     });
   });
 });
