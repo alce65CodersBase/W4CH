@@ -1,3 +1,3 @@
-console.log("Load main.ts");
+console.log('Load main.ts');
 
 export {};
