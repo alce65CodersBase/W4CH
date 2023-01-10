@@ -1,4 +1,4 @@
-export const GENTS = [
+export const MOCK_GENTS = [
   {
     id: 1,
     name: 'Bertin Osborne',

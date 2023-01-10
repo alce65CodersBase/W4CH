@@ -1,3 +1,3 @@
-import { GENTS } from '../mock/gents';
+import { MOCK_GENTS } from '../mock/gents';
 
-export const findGents = () => GENTS;
+export const findGents = () => MOCK_GENTS;
