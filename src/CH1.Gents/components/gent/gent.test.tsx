@@ -5,8 +5,12 @@ import { Gent } from './gent';
 
 const gent = MOCK_GENTS[0];
 describe('Given Gent component', () => {
+  const selectGent = jest.fn();
+  const deleteGent = jest.fn();
   beforeEach(() => {
-    render(<Gent gent={gent}></Gent>);
+    render(
+      <Gent gent={gent} selectGent={selectGent} deleteGent={deleteGent}></Gent>
+    );
   });
   describe('When it has been rendered', () => {
     test('Then it should be on the screen', () => {

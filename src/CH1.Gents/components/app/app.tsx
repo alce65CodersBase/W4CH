@@ -27,6 +27,18 @@ export function App() {
     setGents(gents.map((item) => ({ ...item, selected: isSelect })));
   }
 
+  function selectGent(gentId: GentStructure['id']) {
+    setGents(
+      gents.map((item) =>
+        item.id === gentId ? { ...item, selected: !item.selected } : item
+      )
+    );
+  }
+
+  function deleteGent(gentId: GentStructure['id']) {
+    setGents(gents.filter((item) => item.id !== gentId));
+  }
+
   return (
     <div className="app-container" role="application">
       <Header></Header>
@@ -43,7 +55,12 @@ export function App() {
       <main className="main">
         <ul className="gentlemen">
           {gents.map((item) => (
-            <Gent key={item.id} gent={item}></Gent>
+            <Gent
+              key={item.id}
+              gent={item}
+              selectGent={selectGent}
+              deleteGent={deleteGent}
+            ></Gent>
           ))}
         </ul>
       </main>

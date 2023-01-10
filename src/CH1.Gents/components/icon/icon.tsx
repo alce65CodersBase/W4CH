@@ -1,13 +1,22 @@
 import './icon.css';
-export function Icon({ type }: { type: 'add' | 'delete' }) {
-  const templates = {
-    add: <i className="icon gentleman__icon fas fa-check" role="button"></i>,
-    delete: (
-      <i
-        className="icon gentleman__icon gentleman__icon--delete fas fa-times"
-        role="button"
-      ></i>
-    ),
+
+export type ChangeOperations = 'select' | 'delete';
+export function Icon({
+  type,
+  handleChanges,
+}: {
+  type: ChangeOperations;
+  handleChanges: (_type: ChangeOperations) => void;
+}) {
+  const classTemplates = {
+    select: 'icon gentleman__icon fas fa-check',
+    delete: 'icon gentleman__icon gentleman__icon--delete fas fa-times',
   };
-  return templates[type];
+  return (
+    <i
+      className={classTemplates[type]}
+      role="button"
+      onClick={() => handleChanges(type)}
+    ></i>
+  );
 }

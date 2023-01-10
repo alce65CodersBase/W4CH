@@ -1,11 +1,29 @@
 import { GentStructure } from '../../models/gent';
-import { Icon } from '../icon/icon';
+import { ChangeOperations, Icon } from '../icon/icon';
 
 import './gent.css';
 
-export function Gent({ gent }: { gent: GentStructure }) {
+export function Gent({
+  gent,
+  selectGent,
+  deleteGent,
+}: {
+  gent: GentStructure;
+  selectGent: (_gentId: GentStructure['id']) => void;
+  deleteGent: (_gentId: GentStructure['id']) => void;
+}) {
+  function handleChanges(type: ChangeOperations) {
+    if (type === 'select') {
+      selectGent(gent.id);
+    } else {
+      deleteGent(gent.id);
+    }
+  }
+
+  const gentClass = 'gentleman ' + (gent.selected ? 'selected' : '');
+
   return (
-    <li className="gentleman" aria-label="gent">
+    <li className={gentClass} aria-label="gent">
       <div className="gentleman__avatar-container">
         <img
           className="gentleman__avatar"
@@ -31,8 +49,8 @@ export function Gent({ gent }: { gent: GentStructure }) {
           </li>
         </ul>
       </div>
-      <Icon type="add"></Icon>
-      <Icon type="delete"></Icon>
+      <Icon type="select" handleChanges={handleChanges}></Icon>
+      <Icon type="delete" handleChanges={handleChanges}></Icon>
     </li>
   );
 }
