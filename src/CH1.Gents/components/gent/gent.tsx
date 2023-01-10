@@ -1,10 +1,9 @@
-import { MOCK_GENTS } from '../../mock/gents';
+import { GentStructure } from '../../models/gent';
 import { Icon } from '../icon/icon';
 
 import './gent.css';
 
-export function Gent() {
-  const gent = MOCK_GENTS[0];
+export function Gent({ gent }: { gent: GentStructure }) {
   return (
     <li className="gentleman" aria-label="gent">
       <div className="gentleman__avatar-container">

@@ -23,9 +23,9 @@ export function App() {
     setNumberOfSelected(gents.filter((item) => item.selected === true).length);
   }, [gents]);
 
-  const selectAll = (isSelect: boolean) => {
+  function selectAll(isSelect: boolean) {
     setGents(gents.map((item) => ({ ...item, selected: isSelect })));
-  };
+  }
 
   return (
     <div className="app-container" role="application">
@@ -42,7 +42,9 @@ export function App() {
       </Info>
       <main className="main">
         <ul className="gentlemen">
-          <Gent></Gent>
+          {gents.map((item) => (
+            <Gent key={item.id} gent={item}></Gent>
+          ))}
         </ul>
       </main>
     </div>
