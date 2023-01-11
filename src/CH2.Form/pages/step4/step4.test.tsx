@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { Step4 } from './step4';
+import Step4 from './step4';
 
 describe('Given Step4 component', () => {
   beforeEach(() => {
