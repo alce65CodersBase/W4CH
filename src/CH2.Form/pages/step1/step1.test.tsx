@@ -1,10 +1,15 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter as Router } from 'react-router';
 import Step1 from './step1';
 
 describe('Given Step1 component', () => {
   beforeEach(() => {
-    render(<Step1></Step1>);
+    render(
+      <Router>
+        <Step1></Step1>
+      </Router>
+    );
   });
   describe('When it has been rendered', () => {
     test('Then it should be on the screen', () => {

@@ -13,10 +13,6 @@ export function AppRoutes({ items }: { items: MenuItems }) {
     <Suspense>
       <Routes>
         <Route path={rootPath} element={<Step1></Step1>}></Route>
-        <Route
-          path={rootPath + '/index.html'}
-          element={<Navigate to={rootPath} replace></Navigate>}
-        ></Route>
         <Route path={items[0].path} element={<Step1></Step1>}></Route>
         <Route path={items[1].path} element={<Step2></Step2>}></Route>
         <Route path={items[2].path} element={<Step3></Step3>}></Route>
