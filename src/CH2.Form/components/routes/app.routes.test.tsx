@@ -37,7 +37,7 @@ describe('Given AppRoutes Lazy component, if the user is NOT logged', () => {
     // Value [ '/step1', '/step2', '/step3', '/step4' ]
   });
   describe(`When we render the component
-                And the lazy route is home`, () => {
+                And the lazy route is home (step1)`, () => {
     beforeEach(async () => {
       await act(async () => {
         render(
@@ -47,12 +47,12 @@ describe('Given AppRoutes Lazy component, if the user is NOT logged', () => {
         );
       });
     });
-    test('Then it should display the HomePage', () => {
+    test('Then it should display the Step1Page', () => {
       testLazyRoute(0);
     });
   });
   describe(`When we render the component
-                And the lazy route is todo`, () => {
+                And the lazy route is step2`, () => {
     beforeEach(async () => {
       await act(async () => {
         render(
@@ -62,12 +62,12 @@ describe('Given AppRoutes Lazy component, if the user is NOT logged', () => {
         );
       });
     });
-    test('Then it should display the TodoPage', () => {
+    test('Then it should display the Step2Page', () => {
       testLazyRoute(1);
     });
   });
   describe(`When we render the component
-                And the lazy route is notes`, () => {
+                And the lazy route is step3`, () => {
     beforeEach(async () => {
       await act(async () => {
         render(
@@ -77,12 +77,12 @@ describe('Given AppRoutes Lazy component, if the user is NOT logged', () => {
         );
       });
     });
-    test('Then it should display the NotesPage', () => {
+    test('Then it should display the Step3Page', () => {
       testLazyRoute(2);
     });
   });
   describe(`When we render the component
-                And the lazy route is user / login`, () => {
+                And the lazy route is step4 (login)`, () => {
     beforeEach(async () => {
       await act(async () => {
         render(
@@ -92,7 +92,7 @@ describe('Given AppRoutes Lazy component, if the user is NOT logged', () => {
         );
       });
     });
-    test('Then it should display the AboutPage', () => {
+    test('Then it should display the Step4Page', () => {
       testLazyRoute(3);
     });
   });
