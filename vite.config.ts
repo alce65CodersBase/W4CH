@@ -21,12 +21,12 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        main_ch0: resolve(__dirname, 'CH0/index.html'),
-        main_ch1: resolve(__dirname, 'CH1.Gents/index.html'),
-        main_ch2: resolve(__dirname, 'CH2.Form/index.html'),
-        main_ch3: resolve(__dirname, 'CH3.GoT/index.html'),
-        main_ch4l: resolve(__dirname, 'CH4.List/index.html'),
-        main_ch4p: resolve(__dirname, 'CH4.Phone/index.html'),
+        'CH0/main': resolve(__dirname, 'CH0'),
+        'CH1.Gents/main': resolve(__dirname, 'CH1.Gents'),
+        'CH2.Form/main': resolve(__dirname, 'CH2.Form'),
+        'CH3.GoT/main': resolve(__dirname, 'CH3.GoT'),
+        'CH4.List/main': resolve(__dirname, 'CH4.List'),
+        'CH4.Phone/main': resolve(__dirname, 'CH4.Phone'),
       },
     },
   },
