@@ -1,71 +1,19 @@
 import { SyntheticEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { menuItems } from '../../config/menu.item';
 import { Gender, PersonalData } from '../../models/user';
-import { fieldType } from '../../types/form';
-import { Buttons } from '../buttons/buttons';
+import { consoleDebug } from '../../tools/debug';
+import { Button } from '../core/button/button';
 import { Checkbox } from '../core/checkbox/checkbox';
 import { Input } from '../core/input/input';
 import { RadioGroup } from '../core/radio/radio';
-
+import { formFields } from './fields.config';
+import styles from './personal.form.module.css';
 export function PersonalForm() {
+  const navigate = useNavigate();
   // Tipo que define los campos de datos del formulario
 
   type PersonalFormDataType = PersonalData;
-
-  // El tipo FormFieldType<PersonalFormData> define el conjunto de datos necesarios
-  // para definir cada control del formulario: type, name, id....
-  // El name solo puede ser alguno de los campos del PersonalFormData
-
-  type FormFieldsType = Array<fieldType<PersonalFormDataType>>;
-
-  const formFields: FormFieldsType = [
-    {
-      label: 'First name',
-      placeholder: 'Escribe tu nombre',
-      name: 'firstName',
-      id: 'fn-01',
-      type: 'text',
-      required: true,
-    },
-    {
-      label: 'Last name',
-      placeholder: 'Escribe tu apellido',
-      name: 'lastName',
-      id: 'ln-01',
-      type: 'text',
-      required: true,
-    },
-    {
-      label: 'Birth day',
-      placeholder: '',
-      name: 'birthDate',
-      id: 'bd-01',
-      type: 'datetime-local',
-      required: true,
-      role: 'textbox',
-    },
-    {
-      label: 'Gender',
-      placeholder: '',
-      name: 'gender',
-      id: 'gn-01',
-      type: 'radio',
-      required: true,
-    },
-    {
-      label: 'Email',
-      placeholder: 'Escribe tu correo electrónico',
-      name: 'email',
-      id: 'em-01',
-      type: 'text',
-    },
-    {
-      label: 'Newsletter',
-      placeholder: 'Deseo recibir información de vuestra newsletter?',
-      name: 'hasNewsletter',
-      id: 'nl-01',
-      type: 'checkbox',
-    },
-  ];
 
   const personalFormData: PersonalFormDataType = {
     firstName: '',
@@ -88,6 +36,7 @@ export function PersonalForm() {
     personalFormData.gender = formData.get('gender') as Gender;
     personalFormData.email = formData.get('email') as string;
     personalFormData.hasNewsletter = Boolean(formData.get('newsletter'));
+
     // Fetch de los datos en un bucle for/in
     // let key: keyof PersonalFormDataType;
     // for (key in personalFormData) {
@@ -98,7 +47,8 @@ export function PersonalForm() {
     //     personalFormData[key] = value;
     //   }
     // }
-    // consoleDebug(finalFormData);
+    consoleDebug(personalFormData);
+    navigate(menuItems[1].path);
   };
 
   type RadioOptions = {
@@ -113,8 +63,10 @@ export function PersonalForm() {
     { value: 'prefer not to mention', label: 'Prefiero no decirlo' },
   ];
 
+  const labels = ['Anterior', 'Continuar'];
+
   return (
-    <form onSubmit={handleSubmit} noValidate>
+    <form onSubmit={handleSubmit}>
       {/* De forma iterativa {formFields.map((field) => renderField(field))} */}
       <Input key={formFields[0].name} field={formFields[0]}></Input>
       <Input key={formFields[1].name} field={formFields[1]}></Input>
@@ -126,8 +78,10 @@ export function PersonalForm() {
       ></RadioGroup>
       <Input key={formFields[4].name} field={formFields[4]}></Input>
       <Checkbox field={formFields[5]}></Checkbox>
-      <Buttons></Buttons>
-      {/* <button className={'style.button'} type="submit"></button> */}
+      <div className={styles.navigation}>
+        <Button label={labels[0]} isDisabled={true}></Button>
+        <Button label={labels[1]} type={'submit'}></Button>
+      </div>
     </form>
   );
 }

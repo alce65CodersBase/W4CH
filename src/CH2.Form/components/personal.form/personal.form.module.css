@@ -1,0 +1,7 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-block-start: 1rem;
+  padding-block: 1rem;
+  padding-inline: 1rem;
+}
