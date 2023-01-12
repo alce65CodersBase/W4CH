@@ -7,4 +7,6 @@ export const mockState: StateStructure = {
   step: 1,
 } as StateStructure;
 
-export const mockSetState = () => {};
+export const mockSetState = () => {
+  // Mock for the state setter
+};
