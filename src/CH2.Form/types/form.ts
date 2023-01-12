@@ -6,4 +6,5 @@ export type fieldType<T> = {
   type: 'text' | 'password' | 'email' | 'date' | 'checkbox' | 'radio';
   role?: 'textbox' | 'checkbox' | 'radio';
   required?: true;
+  value?: string | boolean;
 };

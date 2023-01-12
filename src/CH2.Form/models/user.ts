@@ -1,5 +1,5 @@
 export type Gender = 'male' | 'female' | 'other' | 'prefer not to mention';
-export type Account = 'personal' | 'pro' | 'business';
+export type AccountType = 'personal' | 'pro' | 'business';
 
 type hasId = {
   id: string;
@@ -17,7 +17,7 @@ export type PersonalData = {
 export type AccountData = {
   username: string;
   password: string;
-  account: Account;
+  accountType: AccountType;
 };
 export type UserStructure = PersonalData & AccountData;
 

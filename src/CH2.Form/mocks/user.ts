@@ -10,5 +10,5 @@ export const MOCK_USER: IdUserStructure = {
   hasNewsletter: false,
   username: '',
   password: '',
-  account: 'personal',
+  accountType: 'personal',
 };

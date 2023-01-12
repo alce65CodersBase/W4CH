@@ -33,7 +33,6 @@ export const formFields: FormFieldsType = [
     name: 'birthDate',
     id: 'bd-01',
     type: 'date',
-    required: true,
     role: 'textbox',
   },
   {
