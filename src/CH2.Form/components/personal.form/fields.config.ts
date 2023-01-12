@@ -32,7 +32,7 @@ export const formFields: FormFieldsType = [
     placeholder: '',
     name: 'birthDate',
     id: 'bd-01',
-    type: 'datetime-local',
+    type: 'date',
     required: true,
     role: 'textbox',
   },

@@ -33,8 +33,8 @@ describe('Given component Checkbox', () => {
       expect(element).toBeInTheDocument();
     });
     test('Then the user could use the checkbox', async () => {
-      const check = screen.getByRole('checkbox') as HTMLInputElement;
-      expect(check.checked).toEqual(false);
+      const check = screen.getByRole('checkbox');
+      expect(check).not.toBeChecked();
       await userEvent.click(check);
       expect(check).toBeChecked();
     });

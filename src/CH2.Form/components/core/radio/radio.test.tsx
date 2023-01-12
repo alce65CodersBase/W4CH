@@ -40,10 +40,10 @@ describe('Given component RadioGroup', () => {
     test('Then the user could use the radio buttons', async () => {
       const option1 = screen.getByRole('radio', {
         name: 'test1',
-      }) as HTMLInputElement;
+      });
       const option2 = screen.getByRole('radio', {
         name: 'test2',
-      }) as HTMLInputElement;
+      });
       await userEvent.click(option1);
       expect(option1).toBeChecked();
       expect(option2).not.toBeChecked();
