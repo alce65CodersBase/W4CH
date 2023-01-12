@@ -1,0 +1,39 @@
+:root {
+  --light-gray: gainsboro;
+  --gray: gray;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  column-gap: 0.5rem;
+  border: 1px solid var(--light-gray);
+  padding-inline-start: 1rem;
+}
+
+.radioGroup {
+  display: flex;
+  flex-direction: row;
+  column-gap: 0.5rem;
+  margin-block-end: 1rem;
+}
+
+/* .input {
+  border: none;
+  border-block-end: 2px solid var(--light-gray);
+  width: 100%;
+  margin-block-end: 1rem;
+} */
+
+.caption {
+  margin: 0;
+  padding-block-end: 0.5rem;
+  padding-block-start: 0.3rem;
+}
+
+.error {
+  border: 1px solid gainsboro;
+  padding: 0.5rem 1rem;
+  color: maroon;
+  font-size: 0.8rem;
+}
