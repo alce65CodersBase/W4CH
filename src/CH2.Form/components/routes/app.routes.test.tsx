@@ -2,6 +2,7 @@
 import '@testing-library/jest-dom';
 import { act, render, screen } from '@testing-library/react';
 import { MemoryRouter as Router } from 'react-router-dom';
+import { mockSetState, mockState } from '../../mocks/state';
 import { AppRoutes } from './app.routes';
 import { mockPageTitles, items } from './mocks';
 
@@ -42,7 +43,11 @@ describe('Given AppRoutes Lazy component, if the user is NOT logged', () => {
       await act(async () => {
         render(
           <Router initialEntries={lazyPaths} initialIndex={0}>
-            <AppRoutes items={items} />
+            <AppRoutes
+              items={items}
+              state={mockState}
+              setState={mockSetState}
+            />
           </Router>
         );
       });
@@ -57,7 +62,11 @@ describe('Given AppRoutes Lazy component, if the user is NOT logged', () => {
       await act(async () => {
         render(
           <Router initialEntries={lazyPaths} initialIndex={1}>
-            <AppRoutes items={items} />
+            <AppRoutes
+              items={items}
+              state={mockState}
+              setState={mockSetState}
+            />
           </Router>
         );
       });
@@ -72,7 +81,11 @@ describe('Given AppRoutes Lazy component, if the user is NOT logged', () => {
       await act(async () => {
         render(
           <Router initialEntries={lazyPaths} initialIndex={2}>
-            <AppRoutes items={items} />
+            <AppRoutes
+              items={items}
+              state={mockState}
+              setState={mockSetState}
+            />
           </Router>
         );
       });
@@ -87,7 +100,11 @@ describe('Given AppRoutes Lazy component, if the user is NOT logged', () => {
       await act(async () => {
         render(
           <Router initialEntries={lazyPaths} initialIndex={3}>
-            <AppRoutes items={items} />
+            <AppRoutes
+              items={items}
+              state={mockState}
+              setState={mockSetState}
+            />
           </Router>
         );
       });

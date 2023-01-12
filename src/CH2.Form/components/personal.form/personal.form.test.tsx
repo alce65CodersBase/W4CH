@@ -3,16 +3,19 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter as Router } from 'react-router-dom';
 import { PersonalForm } from './personal.form';
-import * as debug from '../../tools/debug';
+import { mockState } from '../../mocks/state';
 
 describe('Given component PersonalForm', () => {
   describe('When it has be rendered', () => {
     let elements: Array<HTMLElement>;
-    let spyDebug: jest.SpyInstance;
+    const mockSetState = jest.fn();
     beforeEach(() => {
       render(
         <Router initialEntries={['/CH2.Form']} initialIndex={0}>
-          <PersonalForm></PersonalForm>
+          <PersonalForm
+            state={mockState}
+            setState={mockSetState}
+          ></PersonalForm>
         </Router>
       );
       elements = [
@@ -21,7 +24,6 @@ describe('Given component PersonalForm', () => {
         screen.getByRole('radio', { name: 'male' }),
         ...screen.getAllByRole('button'),
       ];
-      spyDebug = jest.spyOn(debug, 'consoleDebug');
     });
     test('Then form controls should be in the screen', () => {
       expect(elements.length).toBe(8);
@@ -44,7 +46,7 @@ describe('Given component PersonalForm', () => {
       expect(elements[5]).toBeChecked();
       const buttonNext = elements[7];
       await userEvent.click(buttonNext);
-      expect(spyDebug).toHaveBeenCalled();
+      expect(mockSetState).toHaveBeenCalled();
     });
   });
 });

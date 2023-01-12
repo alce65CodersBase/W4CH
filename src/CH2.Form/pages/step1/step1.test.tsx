@@ -7,7 +7,9 @@ describe('Given Step1 component', () => {
   beforeEach(() => {
     render(
       <Router>
-        <Step1></Step1>
+        <Step1>
+          <div>Mock de personalForm</div>
+        </Step1>
       </Router>
     );
   });

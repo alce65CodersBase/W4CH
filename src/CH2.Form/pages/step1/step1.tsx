@@ -1,11 +1,12 @@
-import { PersonalForm } from '../../components/personal.form/personal.form';
+/* globals JSX */
 import step from './step1.module.css';
 
-export default function Step1() {
+// eslint-disable-next-line no-unused-vars
+export default function Step1({ children }: { children: JSX.Element }) {
   return (
     <section aria-label="step1">
       <h2 className={step.header}>Datos personales</h2>
-      <PersonalForm></PersonalForm>
+      {children}
     </section>
   );
 }
