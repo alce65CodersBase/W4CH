@@ -1,3 +1,4 @@
+import { SyntheticEvent } from 'react';
 import { fieldType } from '../../../types/form';
 import style from './input.module.css';
 
@@ -8,6 +9,10 @@ export const defineAttributes = <T,>(field: fieldType<T>) => {
     id: field.id,
     placeholder: field.placeholder,
   };
+
+  if (field.value) {
+    attributes.defaultValue = field.value;
+  }
 
   if (field.role) {
     attributes.role = field.role;
@@ -20,7 +25,13 @@ export const defineAttributes = <T,>(field: fieldType<T>) => {
   return attributes;
 };
 
-export function Input<T>({ field }: { field: fieldType<T> }) {
+export function Input<T>({
+  field,
+  handle,
+}: {
+  field: fieldType<T>;
+  handle?: (_ev: SyntheticEvent) => void;
+}) {
   const attributes = defineAttributes(field);
 
   return (
@@ -28,7 +39,7 @@ export function Input<T>({ field }: { field: fieldType<T> }) {
       <label className={style.label} htmlFor={field.id}>
         {field.label}
       </label>
-      <input className={style.input} {...attributes} />
+      <input className={style.input} onChange={handle} {...attributes} />
     </div>
   );
 }

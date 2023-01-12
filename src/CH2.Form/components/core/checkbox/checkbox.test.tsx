@@ -24,7 +24,7 @@ describe('Given component Checkbox', () => {
     beforeEach(() => {
       render(
         <form>
-          <Checkbox field={field}></Checkbox>
+          <Checkbox field={field} checked={false}></Checkbox>
         </form>
       );
     });

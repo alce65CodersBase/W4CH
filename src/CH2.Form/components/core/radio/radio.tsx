@@ -25,9 +25,11 @@ export const defineAttributes = <T,>(field: fieldType<T>) => {
 export function RadioGroup<T>({
   field,
   options,
+  selected,
 }: {
   field: fieldType<T>;
   options: Array<RadioOptions>;
+  selected: string | undefined;
 }) {
   const attributes = defineAttributes(field);
 
@@ -42,6 +44,7 @@ export function RadioGroup<T>({
               id={field.id + item.label}
               value={item.value}
               aria-label={item.value}
+              defaultChecked={item.value === selected}
               {...attributes}
             />
             {item.label}

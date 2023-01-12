@@ -20,12 +20,18 @@ export const defineAttributes = <T,>(field: fieldType<T>) => {
   return attributes;
 };
 
-export function Checkbox<T>({ field }: { field: fieldType<T> }) {
+export function Checkbox<T>({
+  field,
+  checked,
+}: {
+  field: fieldType<T>;
+  checked: boolean;
+}) {
   const attributes = defineAttributes(field);
 
   return (
     <div className={style.formGroup} key={field.name}>
-      <input className={style.input} {...attributes} />
+      <input className={style.input} {...attributes} defaultChecked={checked} />
       <label className={style.label} htmlFor={field.id}>
         {field.placeholder}
       </label>

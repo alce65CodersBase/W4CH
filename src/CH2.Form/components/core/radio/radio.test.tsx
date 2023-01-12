@@ -29,7 +29,11 @@ describe('Given component RadioGroup', () => {
     beforeEach(() => {
       render(
         <form>
-          <RadioGroup field={field} options={options}></RadioGroup>
+          <RadioGroup
+            field={field}
+            options={options}
+            selected={options[0].value}
+          ></RadioGroup>
         </form>
       );
     });
