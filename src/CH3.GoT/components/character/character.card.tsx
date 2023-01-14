@@ -1,12 +1,6 @@
 import { Character } from '../../models/character';
 import { Icon } from '../icon/icon';
-import {
-  charContainer,
-  card,
-  info,
-  name,
-  picture,
-} from './character.card.module.css';
+import { body, card, info, name, picture } from './character.card.module.css';
 import { BackCard } from '../back.card/back.card';
 import { Communications } from '../communications/communications';
 
@@ -20,16 +14,16 @@ export function CharacterCard({ character }: { character: Character }) {
   );
 
   const template = (
-    <li className={charContainer + ' character ' + character.name}>
-      <div className={card + ' card'}>
+    <div className={' character ' + character.name}>
+      <li className={card + ' card'}>
         <img
           src={image}
           alt={fullName}
           className={
-            picture + ' card-img-top ' + character.isAlive ? '' : 'reves'
+            picture + ' card-img-top ' + (character.isAlive ? '' : 'reves')
           }
         />
-        <div className="card-body">
+        <div className={body}>
           <h2 className={name + ' card-title h4'}>{fullName}</h2>
           <div className={info}>
             <ul className="list-unstyled">
@@ -48,9 +42,9 @@ export function CharacterCard({ character }: { character: Character }) {
           ></BackCard>
         </div>
         <Icon category={character.category} isAlive={character.isAlive}></Icon>
-      </div>
+      </li>
       <Communications character={character}></Communications>
-    </li>
+    </div>
   );
 
   return template;

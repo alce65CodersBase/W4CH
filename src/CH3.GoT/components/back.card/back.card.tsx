@@ -22,18 +22,18 @@ export function BackCard({
 }: BackCardProps) {
   const createOverlay = (item: AnyCharacter, characterType: string) => {
     const options = {
-      king: <li>Años de reinado: ${item?.kingdomYears?.toString()}</li>,
+      king: <li>Años de reinado: {item?.kingdomYears?.toString()}</li>,
       fighter: (
         <>
-          <li>Arma: ${item?.weapon}</li>
-          <li>Destreza: ${item?.skill}</li>
+          <li>Arma: {item?.weapon}</li>
+          <li>Destreza: {item?.skill}</li>
         </>
       ),
-      counselor: <li>Asesora a: ${item?.chief?.name}</li>,
+      counselor: <li>Asesora a: {item?.chief?.name}</li>,
       squire: (
         <>
-          <li>Servilismo: ${item?.submission}</li>
-          <li>Sirve a: ${item?.master?.name}</li>
+          <li>Servilismo: {item?.submission}</li>
+          <li>Sirve a: {item?.master?.name}</li>
         </>
       ),
     };
@@ -59,15 +59,14 @@ export function BackCard({
     character as AnyCharacter,
     characterType
   );
-  const buttonClass = `${action} btn`;
   const isDisable = !character.isAlive;
 
   return (
     <div className={overlay + ' overlay'}>
-      <ul className="list-unstyled">${overlayElement}</ul>
+      <ul className="list-unstyled">{overlayElement}</ul>
       <div className={actions}>
         <button
-          className={buttonClass}
+          className={action + ' btn'}
           disabled={isDisable}
           data-id={action + ' btn'}
           onClick={handleClick}
@@ -75,7 +74,7 @@ export function BackCard({
           habla
         </button>
         <button
-          className={buttonClass}
+          className={action + ' btn'}
           disabled={isDisable}
           data-id={character.name}
           onClick={handleClick}

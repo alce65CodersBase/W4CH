@@ -10,10 +10,20 @@
   color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   opacity: 0;
   pointer-events: none;
   transition: all 0.2s;
+}
+
+.overlay ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.overlay li {
+  padding: 0;
 }
 
 .actions {

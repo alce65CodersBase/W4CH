@@ -1,26 +1,27 @@
-.charContainer {
-  width: 20%;
-  flex-basis: auto;
-  flex-grow: 0;
-}
-
-.name {
-  height: 60px;
-}
-.picture {
-  object-fit: cover;
-  object-position: top;
-  height: 200px;
-}
 .card {
+  height: 100%;
   position: relative;
   border: none;
   background-color: #331c0e;
   color: #fff;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  height: 400px;
   display: flex;
   flex-direction: column;
+}
+
+.picture {
+  object-fit: cover;
+  object-position: top;
+  height: 55%;
+}
+
+.body {
+  height: 45%;
+  padding-inline: 1rem;
+}
+
+.name {
+  height: 40%;
 }
 
 .info ul {

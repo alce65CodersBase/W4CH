@@ -1,1 +1,2 @@
-export const container: string;
+export const appContainer: string;
+export const title: string;

@@ -1,9 +1,9 @@
-.charactersList {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 100%;
-  min-height: 100vh;
-  align-items: center;
-  gap: 50px;
+.characters-List {
+  display: grid;
+  gap: 2rem;
+  grid-auto-rows: 23rem;
+  grid-template-columns: repeat(auto-fill, 12rem);
   list-style: none;
+  width: 100%;
+  min-height: 100vh;
 }

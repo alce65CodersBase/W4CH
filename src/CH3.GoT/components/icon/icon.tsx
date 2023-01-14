@@ -1,4 +1,4 @@
-import styles from './icon.module.css';
+import { icon, rotate } from './icon.module.css';
 
 export enum emoji {
   'king' = '👑',
@@ -13,12 +13,12 @@ type IconProps = {
 };
 
 export function Icon({ category, isAlive }: IconProps) {
-  let classCSS = styles.emoji;
-  if (!isAlive) classCSS += ' ' + styles.rotate;
+  let classCSS = icon;
+  if (!isAlive) classCSS += ' ' + rotate;
   const title = 'Icon component';
   return (
-    <i className={classCSS} aria-label={title}>
-      {emoji[category]}
-    </i>
+    <div className={classCSS} aria-label={title}>
+      <i>{emoji[category]}</i>
+    </div>
   );
 }

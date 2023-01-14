@@ -1,4 +1,4 @@
-.container {
+.app-container {
   background-color: #b9540c;
   width: 100%;
   height: 100%;
@@ -10,4 +10,9 @@
     padding-left: var(--bs-gutter-x, 0.75rem);
     margin-right: auto;
     margin-left: auto;*/
+}
+
+.title {
+  text-align: center;
+  color: rgb(70, 0, 0);
 }
