@@ -21,17 +21,17 @@ export function useCharacters() {
 
   const handleDead = (character: CharacterStructure): void => {
     dispatch(ac.deadCharacterAction(character));
-    console.log('Muere', character.name);
+    console.log('Muere, after action dispatch', character.name);
   };
 
   const handleCommunicate = (character: CharacterStructure): void => {
-    console.log('Habla', character.name);
     dispatch(ac.startTalkCharacterAction(character));
+    console.log('Habla, after action dispatch', character.name);
     // Se renderizará el elemento debido al nuevo estado
-    setTimeout(() => {
-      dispatch(ac.endTalkCharacterAction());
-      // Desaparecer el componente debido al cambio de estado
-    }, 2000);
+    // setTimeout(() => {
+    //   dispatch(ac.endTalkCharacterAction());
+    //   // Desaparece el componente debido al cambio de estado
+    // }, 3000);
   };
 
   return {
