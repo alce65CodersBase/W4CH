@@ -2,7 +2,7 @@ import { CharacterStructure } from '../models/character';
 import { CharacterAction } from './action.creator';
 import { characterActionTypes as actionTypes } from './action.types';
 
-type CharacterState = {
+export type CharacterState = {
   characters: Array<CharacterStructure>;
   whoIsTalking: CharacterStructure | null;
 };
@@ -20,7 +20,7 @@ export const characterReducer = (
     case actionTypes.dead: {
       const deadName = (action.payload as CharacterStructure).name;
       const newCharacters = state.characters.filter((item) =>
-        item.name === deadName ? { ...item } : item
+        item.name === deadName ? { ...item, isAlive: false } : item
       );
       return { ...state, characters: newCharacters };
     }
