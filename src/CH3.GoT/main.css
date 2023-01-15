@@ -4,9 +4,9 @@ body {
   min-width: 35rem;
 }
 
-.character:nth-child(even) .overlay {
+/* .character:nth-child(even) .overlay {
   top: 100%;
-}
+} */
 .character:hover .overlay {
   opacity: 1;
   pointer-events: all;
