@@ -1,28 +1,26 @@
-import { SyntheticEvent } from 'react';
+import { useContext } from 'react';
 import { CharacterStructure } from '../../../CH3.GoT/models/character';
-import { useCharacters } from '../../hooks/useCharacters';
+import { AppContext } from '../../context/context';
 import { overlay, action, actions } from './back.card.module.css';
-
-type Actions = 'muere' | 'habla';
 
 type BackCardProps = { character: CharacterStructure };
 
 export function BackCard({ character }: BackCardProps) {
-  const { handleCommunicate, handleDead } = useCharacters();
-  const createOverlay = (item: CharacterStructure) => {
+  const { handleCommunicate, handleDead } = useContext(AppContext);
+  const createOverlay = () => {
     const options = {
-      king: <li>Años de reinado: {item?.kingdomYears?.toString()}</li>,
+      king: <li>Años de reinado: {character?.kingdomYears?.toString()}</li>,
       fighter: (
         <>
-          <li>Arma: {item?.weapon}</li>
-          <li>Destreza: {item?.skill}</li>
+          <li>Arma: {character?.weapon}</li>
+          <li>Destreza: {character?.skill}</li>
         </>
       ),
-      counselor: <li>Asesora a: {item?.chief?.name}</li>,
+      counselor: <li>Asesora a: {character?.chief?.name}</li>,
       squire: (
         <>
-          <li>Servilismo: {item?.submission}</li>
-          <li>Sirve a: {item?.master?.name}</li>
+          <li>Servilismo: {character?.submission}</li>
+          <li>Sirve a: {character?.master?.name}</li>
         </>
       ),
     };
@@ -30,36 +28,23 @@ export function BackCard({ character }: BackCardProps) {
     return options[character.category];
   };
 
-  const handleClick = (ev: SyntheticEvent) => {
-    const element = ev.target as HTMLButtonElement;
-    const action = element.textContent?.trim() as Actions;
-    const possibleActions = {
-      muere: () => handleDead(character),
-      habla: () => handleCommunicate(character),
-    };
-    possibleActions[action]();
-  };
-
-  const overlayElement = createOverlay(character);
   const isDisable = !character.isAlive;
 
   return (
     <div className={overlay + ' overlay'}>
-      <ul className="list-unstyled">{overlayElement}</ul>
+      <ul>{createOverlay()}</ul>
       <div className={actions}>
         <button
           className={action + ' btn'}
           disabled={isDisable}
-          data-id={action + ' btn'}
-          onClick={handleClick}
+          onClick={() => handleCommunicate(character)}
         >
           habla
         </button>
         <button
           className={action + ' btn'}
           disabled={isDisable}
-          data-id={character.name}
-          onClick={handleClick}
+          onClick={() => handleDead(character)}
         >
           muere
         </button>

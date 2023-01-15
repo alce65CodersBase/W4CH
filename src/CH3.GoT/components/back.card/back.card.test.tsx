@@ -3,6 +3,7 @@ import '@testing-library/jest-dom';
 import { BackCard } from './back.card';
 import { MOCK_KING } from '../../mocks/characters';
 import { useCharacters } from '../../hooks/useCharacters';
+import { AppContextProvider } from '../../context/context.provider';
 
 jest.mock('../../hooks/useCharacters');
 describe('Given BackCard component', () => {
@@ -16,13 +17,22 @@ describe('Given BackCard component', () => {
   describe('When we call with a character as argument', () => {
     const character = MOCK_KING;
     test('Then it should display ...', () => {
-      render(<BackCard character={character}></BackCard>);
-
-      // TEMP expect(backCard).toBeInstanceOf(BackCard);
+      const content = `Años de reinado: ${MOCK_KING.kingdomYears}`;
+      render(
+        <AppContextProvider>
+          <BackCard character={character}></BackCard>
+        </AppContextProvider>
+      );
+      const element = screen.getByText(content);
+      expect(element).toBeInTheDocument();
     });
 
     test('Then character card have two buttons that should be used', () => {
-      render(<BackCard character={character}></BackCard>);
+      render(
+        <AppContextProvider>
+          <BackCard character={character}></BackCard>
+        </AppContextProvider>
+      );
 
       const buttons = screen.getAllByRole('button');
       expect(buttons.length).toBe(2);

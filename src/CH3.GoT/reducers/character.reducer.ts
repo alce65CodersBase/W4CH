@@ -11,6 +11,7 @@ export const characterReducer = (
   state: CharacterState,
   action: CharacterAction
 ): CharacterState => {
+  console.log('Starting reducer', action.type);
   switch (action.type) {
     case actionTypes.load: {
       const characters = action.payload as Array<CharacterStructure>;
@@ -19,7 +20,7 @@ export const characterReducer = (
 
     case actionTypes.dead: {
       const deadName = (action.payload as CharacterStructure).name;
-      const newCharacters = state.characters.filter((item) =>
+      const newCharacters = state.characters.map((item) =>
         item.name === deadName ? { ...item, isAlive: false } : item
       );
       return { ...state, characters: newCharacters };

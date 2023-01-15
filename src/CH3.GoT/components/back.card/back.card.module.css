@@ -39,3 +39,10 @@
   color: #fff;
   width: 80%;
 }
+
+.action:disabled {
+  background-color: rgba(103, 51, 30, 0.5);
+  color: rgba(255, 255, 255, 0.5);
+  width: 80%;
+  cursor: initial;
+}
