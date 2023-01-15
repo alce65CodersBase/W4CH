@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useReducer, useCallback } from 'react';
 import { MOCK_DATA_JSON } from '../mocks/characters';
 import { CharacterStructure } from '../models/character';
 import * as ac from '../reducers/action.creator';
@@ -14,10 +14,10 @@ export function useCharacters() {
   };
   const [state, dispatch] = useReducer(characterReducer, initialState);
 
-  const handleLoad = () => {
+  const handleLoad = useCallback(() => {
     const newData = MOCK_DATA_JSON as Array<CharacterStructure>;
     dispatch(ac.loadCharacterAction(newData));
-  };
+  }, []);
 
   const handleDead = (character: CharacterStructure): void => {
     dispatch(ac.deadCharacterAction(character));
