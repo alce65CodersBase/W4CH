@@ -1,26 +1,15 @@
 import { SyntheticEvent } from 'react';
-import { Character } from '../../../CH3.GoT/models/character';
-import { Counselor } from '../../../CH3.GoT/models/counselor';
-import { Fighter } from '../../../CH3.GoT/models/fighter';
-import { King } from '../../../CH3.GoT/models/king';
-import { Squire } from '../../../CH3.GoT/models/squire';
+import { CharacterStructure } from '../../../CH3.GoT/models/character';
+import { useCharacters } from '../../hooks/useCharacters';
 import { overlay, action, actions } from './back.card.module.css';
 
-type AnyCharacter = King & Fighter & Counselor & Squire;
 type Actions = 'muere' | 'habla';
 
-type BackCardProps = {
-  character: Character;
-  handleDead: (_characterName: string) => void;
-  handleCommunicate: (_characterName: string) => void;
-};
+type BackCardProps = { character: CharacterStructure };
 
-export function BackCard({
-  character,
-  handleDead,
-  handleCommunicate,
-}: BackCardProps) {
-  const createOverlay = (item: AnyCharacter, characterType: string) => {
+export function BackCard({ character }: BackCardProps) {
+  const { handleCommunicate, handleDead } = useCharacters();
+  const createOverlay = (item: CharacterStructure) => {
     const options = {
       king: <li>Años de reinado: {item?.kingdomYears?.toString()}</li>,
       fighter: (
@@ -38,27 +27,20 @@ export function BackCard({
       ),
     };
 
-    return options[characterType as keyof typeof options];
+    return options[character.category];
   };
 
   const handleClick = (ev: SyntheticEvent) => {
     const element = ev.target as HTMLButtonElement;
     const action = element.textContent?.trim() as Actions;
-    const characterName = character.name;
-    // <string>element.dataset.id;
     const possibleActions = {
-      muere: () => handleDead(characterName),
-      habla: () => handleCommunicate(characterName),
+      muere: () => handleDead(character),
+      habla: () => handleCommunicate(character),
     };
     possibleActions[action]();
   };
 
-  const characterType: string =
-    Object.getPrototypeOf(character).constructor.name.toLowerCase();
-  const overlayElement = createOverlay(
-    character as AnyCharacter,
-    characterType
-  );
+  const overlayElement = createOverlay(character);
   const isDisable = !character.isAlive;
 
   return (

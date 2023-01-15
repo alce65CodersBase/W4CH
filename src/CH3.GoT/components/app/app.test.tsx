@@ -6,7 +6,9 @@ describe('Given the component App', () => {
   describe('When it is rendered', () => {
     test('Then it should be on the screen', () => {
       render(<App />);
-      const header = screen.getByRole('heading', { name: 'CH3 GoT' });
+      const header = screen.getByRole('heading', {
+        name: 'CH3 Game of Trons',
+      });
       expect(header).toBeInTheDocument();
     });
   });

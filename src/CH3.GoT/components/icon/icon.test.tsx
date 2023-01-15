@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter as Router } from 'react-router-dom';
 import { Icon } from './icon';
@@ -13,7 +14,7 @@ describe('Given Icon component', () => {
     });
     test('Then it should display the title', () => {
       const title = /Icon/i;
-      const element = screen.getByText(title);
+      const element = screen.getByRole('region', { name: title });
       expect(element).toBeInTheDocument();
     });
   });

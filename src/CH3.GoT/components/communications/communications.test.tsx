@@ -1,6 +1,6 @@
+import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter as Router } from 'react-router-dom';
-import { MOCK_KING } from '../../services/mock';
 import { Communications } from './communications';
 
 describe('Given Communications component', () => {
@@ -8,13 +8,13 @@ describe('Given Communications component', () => {
     beforeEach(() => {
       render(
         <Router>
-          <Communications character={MOCK_KING} />
+          <Communications />
         </Router>
       );
     });
     test('Then it should display the title', () => {
       const title = /Communications/i;
-      const element = screen.getByText(title);
+      const element = screen.getByRole('region', { name: title });
       expect(element).toBeInTheDocument();
     });
   });

@@ -1,16 +1,19 @@
-import { Character } from '../../models/character';
+import { CharacterStructure } from '../../models/character';
 import { Icon } from '../icon/icon';
 import { body, card, info, name, picture } from './character.card.module.css';
 import { BackCard } from '../back.card/back.card';
-import { Communications } from '../communications/communications';
 
-export function CharacterCard({ character }: { character: Character }) {
+export function CharacterCard({
+  character,
+}: {
+  character: CharacterStructure;
+}) {
   const fullName = `${character.name} ${character.family}`;
   const image = `img/${character.name.toLowerCase()}.jpg`;
   const state = character.isAlive ? (
-    <i className="fas fa-thumbs-up"></i>
+    <i className="fas fa-thumbs-up" role="status" aria-label="alive"></i>
   ) : (
-    <i className="fas fa-thumbs-down"></i>
+    <i className="fas fa-thumbs-down" role="status" aria-label="dead"></i>
   );
 
   const template = (
@@ -20,7 +23,7 @@ export function CharacterCard({ character }: { character: Character }) {
           src={image}
           alt={fullName}
           className={
-            picture + ' card-img-top ' + (character.isAlive ? '' : 'reves')
+            picture + ' card-img-top ' + (character.isAlive ? '' : 'turn')
           }
         />
         <div className={body}>
@@ -31,19 +34,10 @@ export function CharacterCard({ character }: { character: Character }) {
               <li>Estado: {state}</li>
             </ul>
           </div>
-          <BackCard
-            character={character}
-            handleDead={function (_characterName: string): void {
-              throw new Error('Function not implemented.');
-            }}
-            handleCommunicate={function (_characterName: string): void {
-              throw new Error('Function not implemented.');
-            }}
-          ></BackCard>
+          <BackCard character={character}></BackCard>
         </div>
         <Icon category={character.category} isAlive={character.isAlive}></Icon>
       </li>
-      <Communications character={character}></Communications>
     </div>
   );
 
