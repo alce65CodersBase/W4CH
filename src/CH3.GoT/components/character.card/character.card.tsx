@@ -3,6 +3,18 @@ import { Icon } from '../icon/icon';
 import { body, card, info, name, picture } from './character.card.module.css';
 import { BackCard } from '../back.card/back.card';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  IconLookup,
+  IconDefinition,
+  findIconDefinition,
+} from '@fortawesome/fontawesome-svg-core';
+
+library.add(fas);
+
 export function CharacterCard({
   character,
 }: {
@@ -10,10 +22,21 @@ export function CharacterCard({
 }) {
   const fullName = `${character.name} ${character.family}`;
   const image = `img/${character.name.toLowerCase()}.jpg`;
+
+  const upLookup: IconLookup = { prefix: 'fas', iconName: 'thumbs-up' }; // "fa-thumbs-up"
+  const upIconDefinition: IconDefinition = findIconDefinition(upLookup);
+
+  const downLookup: IconLookup = { prefix: 'fas', iconName: 'thumbs-down' }; // 'fa-thumbs-down'
+  const downIconDefinition: IconDefinition = findIconDefinition(downLookup);
+
   const state = character.isAlive ? (
-    <i className="fas fa-thumbs-up" role="status" aria-label="alive"></i>
+    <FontAwesomeIcon icon={upIconDefinition} role="status" aria-label="alive" />
   ) : (
-    <i className="fas fa-thumbs-down" role="status" aria-label="dead"></i>
+    <FontAwesomeIcon
+      icon={downIconDefinition}
+      role="status"
+      aria-label="dead"
+    />
   );
 
   const template = (
