@@ -1,32 +1,32 @@
-type Category = 'king' | 'fighter' | 'counselor' | 'squire';
+/* eslint-disable no-unused-vars */
+export type Category = 'king' | 'fighter' | 'counselor' | 'squire';
 
-type CharacterStructure = {
+export type CharacterStructure = {
   name: string;
   family: string;
   age: number;
+  isAlive: boolean;
+  message: string;
   category: Category;
+  kingdomYears?: number; // For King
+  weapon?: string; // For Fighter
+  skill?: number; // For Fighter
+  chief?: Character; // For Counselor
+  submission?: number; // For Squire
+  master?: Character; // ForSquire
 };
 
-export class Character implements CharacterStructure {
+class Character implements CharacterStructure {
   static series = 'GoT';
-  private _isAlive: boolean;
-  public get isAlive(): boolean {
-    return this._isAlive;
-  }
-  protected message: string;
+  public isAlive: boolean;
+  public message: string;
   constructor(
     public name: string,
     public family: string,
     public age: number,
     public category: Category
   ) {
-    this._isAlive = true;
+    this.isAlive = true;
     this.message = '';
-  }
-  communicate() {
-    return this.message;
-  }
-  dead() {
-    this._isAlive = false;
   }
 }
