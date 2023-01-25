@@ -1,3 +1,5 @@
+import { SeriesPage } from '../../pages/series/series';
+
 export function App() {
-  return <></>;
+  return <SeriesPage></SeriesPage>;
 }
