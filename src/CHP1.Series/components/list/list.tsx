@@ -1,23 +1,26 @@
-import { Series } from '../../models/series';
-import { getSeries } from '../../services/mock.repo';
+import { useContext } from 'react';
 import { SeriesCard } from '../serie.card/serie.card';
 import list__ from './list.module.css';
+import { AppContext } from '../../context/app.context';
 
 type listProps = {
   filter: 'series-watched' | 'series-pending';
-  series: Array<Series>;
-  deleteSerie: (_serie: Series) => void;
-  updateScore?: (_serie: Series, _score: number) => void;
 };
 
-export function List({ filter, series, deleteSerie, updateScore }: listProps) {
+// eslint-disable-next-line no-unused-vars
+export function List({ filter }: listProps) {
+  const { pendingSeries, watchedSeries, series } = useContext(AppContext);
+  const filteredSeries = filter.includes('watched')
+    ? watchedSeries
+    : pendingSeries;
   const slot = filter + '-cards-slot';
   let title = 'Pending series';
-  let stateInfo = `You have ${series.length} series pending to watch`;
+  let stateInfo = `You have ${filteredSeries.length} series pending to watch`;
+
   if (filter.includes('watched')) {
     title = 'Watched series';
     stateInfo =
-      series.length === getSeries().length
+      filteredSeries.length === series.length
         ? `Congrats! You've watched all your series`
         : '';
   }
@@ -31,13 +34,8 @@ export function List({ filter, series, deleteSerie, updateScore }: listProps) {
       <h3 className={list__.subsectionTitle}>{title}</h3>
       <p className={list__.info}>{stateInfo}</p>
       <ul className={list__.seriesList + ' ' + slot}>
-        {series.map((item) => (
-          <SeriesCard
-            key={item.id}
-            serie={item}
-            deleteSerie={deleteSerie}
-            updateScore={updateScore}
-          ></SeriesCard>
+        {filteredSeries.map((item) => (
+          <SeriesCard key={item.id} serie={item}></SeriesCard>
         ))}
       </ul>
     </section>

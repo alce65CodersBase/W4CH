@@ -1,19 +1,16 @@
 /* eslint-disable no-unused-vars */
+import { useContext } from 'react';
+import { AppContext } from '../../context/app.context';
 import { Series } from '../../models/series';
 import { ScoreStars } from '../score.stars/score.stars';
 import card__ from './serie.card.module.css';
 
 type seriesCardProps = {
   serie: Series;
-  deleteSerie: (serie: Series) => void;
-  updateScore?: (serie: Series, score: number) => void;
 };
-export function SeriesCard({
-  serie,
-  deleteSerie,
-  updateScore,
-}: seriesCardProps) {
-  // eslint-disable-next-line no-unused-vars
+export function SeriesCard({ serie }: seriesCardProps) {
+  const { deleteSerie, updateScore } = useContext(AppContext);
+
   const handleScore = (newScore: number) => {
     if (updateScore === undefined) return;
     updateScore(serie, newScore);
