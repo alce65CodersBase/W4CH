@@ -9,13 +9,7 @@ type seriesCardProps = {
   serie: Series;
 };
 export function SeriesCard({ serie }: seriesCardProps) {
-  const { deleteSerie, updateScore } = useContext(AppContext);
-
-  const handleScore = (newScore: number) => {
-    if (updateScore === undefined) return;
-    updateScore(serie, newScore);
-  };
-
+  const { deleteSerie } = useContext(AppContext);
   const scoreSelector = `.score-slot-${serie.id}`;
 
   return (
@@ -25,7 +19,7 @@ export function SeriesCard({ serie }: seriesCardProps) {
       <p className={card__.serieInfo}>
         {serie.creator} ({serie.year})
       </p>
-      <ScoreStars score={serie.score} handleScore={handleScore}></ScoreStars>
+      <ScoreStars serie={serie}></ScoreStars>
       <i
         className={`fas fa-times-circle ${card__['icon--delete']}`}
         onClick={() => deleteSerie(serie)}
