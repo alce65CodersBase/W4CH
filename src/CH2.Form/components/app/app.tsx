@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { menuItems } from '../../config/menu.item';
 import { AccountData, PersonalData } from '../../models/user';
-import { consoleDebug } from '../../tools/debug';
+
 import { AppRoutes } from '../routes/app.routes';
 
 import app from './app.module.css';
+import { consoleDebug } from '../../../lib/debug';
 
 export type StateStructure = {
   personal: PersonalData;
