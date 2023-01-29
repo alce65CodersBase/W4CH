@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Series } from '../models/series';
+import { consoleDebug } from '../../CH2.Form/tools/debug';
+import { getSeries } from '../services/mock.repo';
 
 export const useSeries = () => {
   const initialSeries: Array<Series> = [];
@@ -21,6 +23,17 @@ export const useSeries = () => {
   const deleteSerie = (serie: Series) => {
     setSeries(series.filter((item) => item.id !== serie.id));
   };
+
+  useEffect(() => {
+    const series: Array<Series> = getSeries();
+    setSeries(series);
+  }, []);
+
+  useEffect(() => {
+    consoleDebug(series);
+    setPendingSeries(series.filter((item) => item.score === 0));
+    setWatchedSeries(series.filter((item) => item.score > 0));
+  }, [series]);
 
   return {
     series,
