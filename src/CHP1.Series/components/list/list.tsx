@@ -7,7 +7,6 @@ type listProps = {
   filter: 'series-watched' | 'series-pending';
 };
 
-// eslint-disable-next-line no-unused-vars
 export function List({ filter }: listProps) {
   const { pendingSeries, watchedSeries, series } = useContext(AppContext);
   const filteredSeries = filter.includes('watched')

@@ -27,6 +27,7 @@ export function SeriesCard({ serie }: seriesCardProps) {
       </p>
       <ScoreStars serie={serie}></ScoreStars>
       <i
+        role="button"
         className={`fas fa-times-circle ${iconDelete}`}
         onClick={() => deleteSerie(serie)}
       ></i>
