@@ -11,8 +11,8 @@ type listProps = {
 export function List({ filter }: listProps) {
   const { pendingSeries, watchedSeries, series } = useContext(AppContext);
   const filteredSeries = filter.includes('watched')
-    ? watchedSeries
-    : pendingSeries;
+    ? watchedSeries()
+    : pendingSeries();
   const slot = filter + '-cards-slot';
   let title = 'Pending series';
   let stateInfo = `You have ${filteredSeries.length} series pending to watch`;
