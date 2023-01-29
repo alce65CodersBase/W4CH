@@ -1,0 +1,18 @@
+.list {
+  border: 1px solid gainsboro;
+  margin-block-end: 1rem;
+}
+
+.subsection-title {
+  margin: 10px 0;
+  font-weight: 500;
+  color: brown;
+}
+.info {
+  font-size: 0.9em;
+}
+.series-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
