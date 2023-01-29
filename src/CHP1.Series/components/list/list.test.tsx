@@ -9,6 +9,17 @@ import { SeriesCard } from '../serie.card/serie.card';
 jest.mock('../../services/mock.repo');
 jest.mock('../serie.card/serie.card');
 
+type Filter = 'series-pending' | 'series-watched';
+const renderElements = (filter: Filter, mockContext: AppContextType) => {
+  render(
+    <AppContext.Provider value={mockContext}>
+      <List filter={filter}></List>
+    </AppContext.Provider>
+  );
+
+  return [screen.getByRole('region', { name: filter })];
+};
+
 describe('Given "List" component', () => {
   (getSeries as jest.Mock).mockReturnValue([MOCK_SERIES[0]]);
 
@@ -25,16 +36,9 @@ describe('Given "List" component', () => {
     const filter = 'series-pending';
     let elements: HTMLElement[];
     beforeEach(() => {
-      render(
-        <AppContext.Provider value={mockContext}>
-          <List filter={filter}></List>
-        </AppContext.Provider>
-      );
-
-      elements = [screen.getByRole('region', { name: filter })];
+      elements = renderElements(filter, mockContext);
     });
     test(`Then the title should be render`, () => {
-      expect(elements[0]).toBeInstanceOf(HTMLElement);
       expect(elements[0]).toBeInTheDocument();
     });
     test('Then the filter for pending series should has been used', () => {
@@ -47,17 +51,10 @@ describe('Given "List" component', () => {
     const filter = 'series-watched';
     let elements: HTMLElement[];
     beforeEach(() => {
-      render(
-        <AppContext.Provider value={mockContext}>
-          <List filter={filter}></List>
-        </AppContext.Provider>
-      );
-
-      elements = [screen.getByRole('region', { name: filter })];
+      elements = renderElements(filter, mockContext);
     });
 
     test(`Then the title should be render`, () => {
-      expect(elements[0]).toBeInstanceOf(HTMLElement);
       expect(elements[0]).toBeInTheDocument();
     });
     test('Then the filter for watched series should has been used', () => {
