@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useContext } from 'react';
 import { AppContext } from '../../context/app.context';
 import { Series } from '../../models/series';
@@ -16,8 +15,6 @@ type seriesCardProps = {
 };
 export function SeriesCard({ serie }: seriesCardProps) {
   const { deleteSerie } = useContext(AppContext);
-  const scoreSelector = `.score-slot-${serie.id}`;
-
   return (
     <li className={card} aria-label="Serie">
       <img className={seriePoster} src={serie.poster} alt={serie.name} />

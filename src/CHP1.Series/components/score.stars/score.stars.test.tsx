@@ -29,8 +29,7 @@ describe('Given "ScoreStars" component for a 0 score', () => {
   });
   describe('When we click its <li>', () => {
     test('Then the function from the contest should be called', () => {
-      const button = elements[0] as HTMLElement;
-      fireEvent.click(button);
+      fireEvent.click(elements[0]);
       expect(mockContext.updateScore).toHaveBeenCalled();
     });
   });
@@ -59,8 +58,7 @@ describe('Given "ScoreStars" component for a 3 score', () => {
   });
   describe('When we click its <li>', () => {
     test('Then the function from the contest should NOT be called', () => {
-      const button = elements[0] as HTMLElement;
-      fireEvent.click(button);
+      fireEvent.click(elements[0]);
       expect(mockContext.updateScore).not.toHaveBeenCalled();
     });
   });
