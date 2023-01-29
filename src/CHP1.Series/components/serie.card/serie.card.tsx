@@ -3,7 +3,13 @@ import { useContext } from 'react';
 import { AppContext } from '../../context/app.context';
 import { Series } from '../../models/series';
 import { ScoreStars } from '../score.stars/score.stars';
-import card__ from './serie.card.module.css';
+import {
+  card,
+  serieTitle,
+  seriePoster,
+  serieInfo,
+  iconDelete,
+} from './serie.card.module.css';
 
 type seriesCardProps = {
   serie: Series;
@@ -13,15 +19,15 @@ export function SeriesCard({ serie }: seriesCardProps) {
   const scoreSelector = `.score-slot-${serie.id}`;
 
   return (
-    <li className={card__.container} aria-label="Serie">
-      <img className={card__.seriePoster} src={serie.poster} alt={serie.name} />
-      <h4 className={card__.serieTitle}>{serie.name}</h4>
-      <p className={card__.serieInfo}>
+    <li className={card} aria-label="Serie">
+      <img className={seriePoster} src={serie.poster} alt={serie.name} />
+      <h4 className={serieTitle}>{serie.name}</h4>
+      <p className={serieInfo}>
         {serie.creator} ({serie.year})
       </p>
       <ScoreStars serie={serie}></ScoreStars>
       <i
-        className={`fas fa-times-circle ${card__['icon--delete']}`}
+        className={`fas fa-times-circle ${iconDelete}`}
         onClick={() => deleteSerie(serie)}
       ></i>
     </li>

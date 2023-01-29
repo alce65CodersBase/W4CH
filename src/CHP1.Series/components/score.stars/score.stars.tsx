@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { AppContext } from '../../context/app.context';
 import { Series } from '../../models/series';
-import score__ from './score.stars.module.css';
+import { score, star } from './score.stars.module.css';
 
 const STARS = [1, 2, 3, 4, 5];
 
@@ -15,7 +15,7 @@ export function ScoreStars({ serie }: scoreStarsProps) {
     return (
       <li
         key={item}
-        className={score__.star}
+        className={star}
         role="button"
         aria-label={`Star${item}`}
         onClick={serie.score === 0 ? () => updateScore(serie, item) : () => {}}
@@ -28,5 +28,5 @@ export function ScoreStars({ serie }: scoreStarsProps) {
     );
   });
 
-  return <ul className={score__.container}>{stars}</ul>;
+  return <ul className={score}>{stars}</ul>;
 }

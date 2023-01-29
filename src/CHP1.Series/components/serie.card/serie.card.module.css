@@ -1,4 +1,4 @@
-.container {
+.card {
   width: 24%;
   height: 422px;
   margin-bottom: 20px;
@@ -14,7 +14,7 @@
   cursor: pointer;
   display: none;
 }
-.container:hover .icon--delete {
+.card:hover .icon--delete {
   display: block;
 }
 .seriePoster {
