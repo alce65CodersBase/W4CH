@@ -1,5 +1,6 @@
 import { screen, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { MemoryRouter as Router } from 'react-router-dom';
 import { MenuOptionsType } from '../../types/menu.options';
 import { Menu } from './menu';
 
@@ -10,7 +11,11 @@ describe('Given "Menu" component', () => {
   ];
   let elements: HTMLElement[];
   beforeEach(() => {
-    render(<Menu options={mockOptions}></Menu>);
+    render(
+      <Router>
+        <Menu options={mockOptions}></Menu>
+      </Router>
+    );
     elements = [screen.getByRole('navigation')];
   });
 

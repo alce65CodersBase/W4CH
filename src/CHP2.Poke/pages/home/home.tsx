@@ -1,4 +1,4 @@
-export function HomePage() {
+export default function HomePage() {
   return (
     <section className="home-poke-list" aria-label="Home">
       {/* new HomePokeList('.home-poke-list', this.state)

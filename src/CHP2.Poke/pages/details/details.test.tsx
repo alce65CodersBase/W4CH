@@ -1,6 +1,6 @@
 import { screen, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { DetailsPage } from './details';
+import DetailsPage from './details';
 
 // NEXT jest.mock('../../components/pokemons/poke.detail');
 

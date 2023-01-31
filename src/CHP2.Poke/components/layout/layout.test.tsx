@@ -13,7 +13,11 @@ jest.mock('./main');
 describe('Given "Layout" component', () => {
   const menuitems = [] as MenuOptionsType;
 
-  render(<Layout menuItems={menuitems}></Layout>);
+  render(
+    <Layout menuItems={menuitems}>
+      <></>
+    </Layout>
+  );
 
   test('Then its child components should to be called', () => {
     expect(Header).toHaveBeenCalled();

@@ -1,6 +1,6 @@
 import { screen, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { FavoritesPage } from './favorites';
+import FavoritesPage from './favorites';
 
 describe('Given "FavoritesPage" component', () => {
   render(<FavoritesPage></FavoritesPage>);

@@ -1,4 +1,5 @@
 import { MenuOptionsType } from '../../types/menu.options';
+import { Link } from 'react-router-dom';
 
 export function Menu({ options }: { options: MenuOptionsType }) {
   return (
@@ -6,9 +7,9 @@ export function Menu({ options }: { options: MenuOptionsType }) {
       <ul className="poke-menu__list-items">
         {options.map((item) => (
           <li key={item.label} className="poke-menu__item">
-            <a href={item.path} className="poke-menu__link">
+            <Link to={item.path} className="poke-menu__link">
               {item.label}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
