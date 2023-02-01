@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer>
       <address>
-        ${author} - ${brand}
+        {author} - {brand}
       </address>
     </footer>
   );
