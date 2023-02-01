@@ -10,7 +10,7 @@ export function App() {
   ];
   return (
     <>
-      <Layout menuItems={items}>
+      <Layout menuItems={items.slice(0, 2)}>
         <AppRoutes items={items}></AppRoutes>
       </Layout>
     </>
