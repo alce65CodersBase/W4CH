@@ -1,8 +1,9 @@
 import { screen, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import DetailsPage from './details';
+import { PokeDetail } from '../../components/pokemons/poke.detail';
 
-// NEXT jest.mock('../../components/pokemons/poke.detail');
+jest.mock('../../components/pokemons/poke.detail');
 
 describe('Given "DetailsPage" component', () => {
   let pokeElements: HTMLElement[];
@@ -18,7 +19,7 @@ describe('Given "DetailsPage" component', () => {
       expect(pokeElements[0]).toBeInTheDocument();
     });
     test('Then its child components should to be called', () => {
-      // NEXT expect(PokeDetail).toHaveBeenCalled();
+      expect(PokeDetail).toHaveBeenCalled();
     });
   });
 });

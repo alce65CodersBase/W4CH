@@ -1,7 +1,9 @@
 import { screen, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import FavoritesPage from './favorites';
+import { MyPokeList } from '../../components/lists/my.poke.list';
 
+jest.mock('../../components/lists/my.poke.list');
 describe('Given "FavoritesPage" component', () => {
   render(<FavoritesPage></FavoritesPage>);
   const pokeElements = [
@@ -13,7 +15,7 @@ describe('Given "FavoritesPage" component', () => {
       expect(pokeElements[0]).toBeInTheDocument();
     });
     test('Then its child components should to be called', () => {
-      // NEXT expect(...).toHaveBeenCalled();
+      expect(MyPokeList).toHaveBeenCalled();
     });
   });
 });

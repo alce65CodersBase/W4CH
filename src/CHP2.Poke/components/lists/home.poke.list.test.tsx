@@ -1,3 +1,4 @@
+import { MemoryRouter as Router } from 'react-router-dom';
 import { screen, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { HomePokeList } from './home.poke.list';
@@ -11,9 +12,11 @@ describe('Given the component HomePokeList', () => {
     beforeEach(() => {
       const context: UsePoke = MOCK_FULL_CONTEXT;
       render(
-        <AppContext.Provider value={context}>
-          <HomePokeList></HomePokeList>
-        </AppContext.Provider>
+        <Router>
+          <AppContext.Provider value={context}>
+            <HomePokeList></HomePokeList>
+          </AppContext.Provider>
+        </Router>
       );
       elements = [screen.getByRole('heading'), screen.getByText(/Pokemons/i)];
     });

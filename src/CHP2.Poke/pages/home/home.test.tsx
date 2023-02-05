@@ -1,9 +1,17 @@
+import { MemoryRouter as Router } from 'react-router-dom';
 import { screen, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import HomePage from './home';
+import { HomePokeList } from '../../components/lists/home.poke.list';
+
+jest.mock('../../components/lists/home.poke.list');
 
 describe('Given "HomePage" component', () => {
-  render(<HomePage></HomePage>);
+  render(
+    <Router>
+      <HomePage></HomePage>
+    </Router>
+  );
   const pokeElements = [
     screen.getByRole('region', { name: 'Home' }), // <h2>
   ];
@@ -13,7 +21,7 @@ describe('Given "HomePage" component', () => {
       expect(pokeElements[0]).toBeInTheDocument();
     });
     test('Then its child components should to be called', () => {
-      // NEXT expect(...).toHaveBeenCalled();
+      expect(HomePokeList).toHaveBeenCalled();
     });
   });
 });

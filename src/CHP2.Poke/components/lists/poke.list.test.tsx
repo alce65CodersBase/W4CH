@@ -1,3 +1,4 @@
+import { MemoryRouter as Router } from 'react-router-dom';
 import { screen, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { PokeList } from './poke.list';
@@ -8,7 +9,11 @@ describe('Given the component PokeList', () => {
     let elements: HTMLElement[];
     const mockPoke = { ...MOCK_POKE_EMPTY, id: 1, name: 'Snorlak' };
     beforeEach(() => {
-      render(<PokeList pokeData={[mockPoke]}></PokeList>);
+      render(
+        <Router>
+          <PokeList pokeData={[mockPoke]}></PokeList>
+        </Router>
+      );
       elements = [screen.getByText(mockPoke.name) as HTMLElement];
     });
     test(`Then the element of the "Poke List should be
