@@ -5,11 +5,7 @@ import { PokeItem } from './poke.item';
 
 describe('Given "PokeItem" component', () => {
   describe('When it is rendered', () => {
-    render(
-      <PokeItem poke={MOCK_POKE_EMPTY} source="any">
-        <p>Favorite Icon</p>
-      </PokeItem>
-    );
+    render(<PokeItem poke={MOCK_POKE_EMPTY} source="any"></PokeItem>);
     const elements = [
       screen.getByRole('listitem'),
       screen.getByRole('link'),
