@@ -1,4 +1,5 @@
 import { Sprites } from '../../models/pokemon';
+import { FavoriteIcon } from './favorite.icon';
 
 type PokeItemStructure = {
   id: number;
@@ -9,9 +10,8 @@ type PokeItemStructure = {
 type PokeItemProps = {
   poke: PokeItemStructure;
   source: string;
-  children: globalThis.JSX.Element;
 };
-export function PokeItem({ poke, source, children }: PokeItemProps) {
+export function PokeItem({ poke, source }: PokeItemProps) {
   const url = `./detail.html?id=${poke.id}&origin=${source}`;
   return (
     <li className="poke-item">
@@ -31,7 +31,7 @@ export function PokeItem({ poke, source, children }: PokeItemProps) {
         </span>
       </a>
       <span className="poke-item__fav" id={`fav-${poke.id}`} data-id={poke.id}>
-        {children}
+        <FavoriteIcon pokeId={poke.id}></FavoriteIcon>
       </span>
     </li>
   );

@@ -1,6 +1,4 @@
 import { Pokemon } from '../../models/pokemon';
-
-import { FavoriteIcon } from '../pokemons/favorite.icon';
 import { PokeItem } from '../pokemons/poke.item';
 
 type PokeListProps = { pokeData: Pokemon[] };
@@ -8,9 +6,7 @@ export function PokeList({ pokeData }: PokeListProps) {
   return (
     <>
       {pokeData.map((poke: Pokemon) => (
-        <PokeItem key={poke.id} poke={poke} source={''}>
-          <FavoriteIcon pokeId={poke.id}></FavoriteIcon>
-        </PokeItem>
+        <PokeItem key={poke.id} poke={poke} source={''}></PokeItem>
       ))}
     </>
   );
