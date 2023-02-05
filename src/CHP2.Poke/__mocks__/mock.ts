@@ -18,7 +18,7 @@ const MOCK_SPRITES: Sprites = {
   versions: null,
 };
 
-export const MOCK_POKE: Pokemon = {
+export const MOCK_POKE_EMPTY: Pokemon = {
   name: '',
   url: '',
   id: 1,
