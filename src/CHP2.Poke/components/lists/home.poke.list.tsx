@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { AppContext } from '../../context/app.context';
 import { PageText } from './page.text';
 import { PokeList } from './poke.list';
+import { Pagination } from '../pokemons/pagination';
 
 export function HomePokeList() {
   const {
@@ -16,7 +17,9 @@ export function HomePokeList() {
       <ul className="poke-list__list">
         <PokeList pokeData={pokeData}></PokeList>
       </ul>
-      <div className="pagination"></div>
+      <div className="pagination">
+        <Pagination></Pagination>
+      </div>
     </>
   );
 }
