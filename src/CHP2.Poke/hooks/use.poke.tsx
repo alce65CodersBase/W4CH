@@ -19,6 +19,7 @@ export interface UsePoke {
   pokeSelected: Pokemon | null;
   changeFavorites: (_id: number) => Promise<void>;
   setDetail: (_origin: string, _pokeId: number) => void;
+  hydrateData: (_url: string) => Promise<void>;
 }
 
 export function usePoke(): UsePoke {
@@ -131,5 +132,6 @@ export function usePoke(): UsePoke {
     favorites,
     changeFavorites,
     setDetail,
+    hydrateData,
   };
 }

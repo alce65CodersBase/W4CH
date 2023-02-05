@@ -15,5 +15,6 @@ const initialContext = {
   pokeSelected: {} as Pokemon,
   async changeFavorites(_id: number) {},
   async setDetail() {},
+  async hydrateData(_url: string) {},
 } as AppContextType;
 export const AppContext = createContext(initialContext);

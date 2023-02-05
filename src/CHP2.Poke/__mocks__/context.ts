@@ -18,4 +18,5 @@ export const MOCK_FULL_CONTEXT: UsePoke = {
   pokeSelected: MOCK_POKE_EMPTY,
   changeFavorites: jest.fn(),
   setDetail: jest.fn(),
+  hydrateData: jest.fn(),
 };
