@@ -5,8 +5,8 @@ import { createPokeRepo } from '../services/repository/poke.repo';
 
 export type StateStructure = {
   count: number;
-  nextUrl: string | null;
-  previousUrl: string | null;
+  nextUrl: string;
+  previousUrl: string;
   pokeData: Array<Pokemon>;
 };
 
@@ -24,8 +24,8 @@ export interface UsePoke {
 export function usePoke(): UsePoke {
   const initialState: StateStructure = {
     count: 0,
-    nextUrl: null,
-    previousUrl: null,
+    nextUrl: '',
+    previousUrl: '',
     pokeData: [],
   };
   const initialFavorites: FavoritesStructure = [];
@@ -79,8 +79,8 @@ export function usePoke(): UsePoke {
 
     setState({
       count,
-      nextUrl,
-      previousUrl,
+      nextUrl: nextUrl as string,
+      previousUrl: previousUrl as string,
       pokeData,
     });
 
@@ -113,7 +113,7 @@ export function usePoke(): UsePoke {
     setFavorites([...favorites, resp]);
   };
 
-  const getDetail = (origin: string, pokeId: number) => {
+  const setDetail = (origin: string, pokeId: number) => {
     let pokeData;
     if (origin === '.my-poke-list__list') {
       pokeData = favorites.find((poke) => poke.id === Number(pokeId));
@@ -130,6 +130,6 @@ export function usePoke(): UsePoke {
     pokeSelected,
     favorites,
     changeFavorites,
-    setDetail: getDetail,
+    setDetail,
   };
 }

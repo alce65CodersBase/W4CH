@@ -1,6 +1,19 @@
 import { createContext } from 'react';
 import { usePoke } from '../hooks/use.poke';
+import { Pokemon } from '../models/pokemon';
 
 export type AppContextType = ReturnType<typeof usePoke>;
-const initialContext = {} as AppContextType;
+const initialContext = {
+  state: {
+    count: 0,
+    nextUrl: '',
+    previousUrl: '',
+    pokeData: [],
+  },
+  favorites: [],
+  loadingState: false,
+  pokeSelected: {} as Pokemon,
+  async changeFavorites(_id: number) {},
+  async setDetail() {},
+} as AppContextType;
 export const AppContext = createContext(initialContext);
