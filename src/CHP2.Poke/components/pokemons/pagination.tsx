@@ -24,7 +24,7 @@ export function Pagination() {
         disabled={Boolean(!state.previousUrl)}
       >
         <i className="fas fa-backward" data-id="prev"></i>
-        <span data-id="prev">Anterior</span>
+        <span data-id="prev"> Anterior</span>
       </button>
       <button
         className="pagination__button"
@@ -33,7 +33,7 @@ export function Pagination() {
         onClick={handleButton}
         disabled={Boolean(!state.nextUrl)}
       >
-        <span data-id="next">Siguiente</span>
+        <span data-id="next">Siguiente </span>
         <i className="fas fa-forward" data-id="next"></i>
       </button>
     </>

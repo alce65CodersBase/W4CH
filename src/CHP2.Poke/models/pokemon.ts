@@ -1,3 +1,10 @@
+export const OTHER_SPRITES: Other = {
+  // eslint-disable-next-line camelcase
+  dream_world: {} as Dreamworld,
+  home: {} as Home,
+  'official-artwork': {} as OfficialArtwork,
+};
+
 export interface ProtoPokemon {
   name: string;
   url: string;
