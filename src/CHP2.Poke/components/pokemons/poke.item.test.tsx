@@ -1,12 +1,12 @@
 import { screen, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { MOCK_POKE } from '../../__mocks__/mock';
+import { MOCK_POKE_EMPTY } from '../../__mocks__/mock';
 import { PokeItem } from './poke.item';
 
 describe('Given "PokeItem" component', () => {
   describe('When it is rendered', () => {
     render(
-      <PokeItem poke={MOCK_POKE} source="any">
+      <PokeItem poke={MOCK_POKE_EMPTY} source="any">
         <p>Favorite Icon</p>
       </PokeItem>
     );

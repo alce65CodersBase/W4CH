@@ -1,6 +1,6 @@
 import { render, screen, act, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { MOCK_POKE } from '../__mocks__/mock';
+import { MOCK_POKE_EMPTY } from '../__mocks__/mock';
 import { Pokemon, ProtoPokemon } from '../models/pokemon';
 import { URL_POKE_API } from '../services/config';
 import * as service from '../services/repository/poke.repo';
@@ -12,7 +12,7 @@ jest.mock('../services/repository/poke.repo');
 
 const fetchPoke = jest.fn().mockImplementation((url) => {
   let data: PokeResponse<Pokemon | ProtoPokemon> = [
-    { ...MOCK_POKE, id: 1, name: 'Snorlax' },
+    { ...MOCK_POKE_EMPTY, id: 1, name: 'Snorlax' },
   ];
   if (url === URL_POKE_API) {
     data = {
@@ -41,7 +41,7 @@ const fetchPoke = jest.fn().mockImplementation((url) => {
 
 const queryPoke = jest
   .fn()
-  .mockResolvedValue({ ...MOCK_POKE, id: 1, name: 'Snorlax' });
+  .mockResolvedValue({ ...MOCK_POKE_EMPTY, id: 1, name: 'Snorlax' });
 const addPoke = jest.fn().mockResolvedValue({});
 const removePoke = jest.fn().mockResolvedValue({});
 

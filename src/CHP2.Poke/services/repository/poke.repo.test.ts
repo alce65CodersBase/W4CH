@@ -1,4 +1,4 @@
-import { MOCK_POKE } from '../../__mocks__/mock';
+import { MOCK_POKE_EMPTY } from '../../__mocks__/mock';
 import { createPokeRepo } from './poke.repo';
 
 describe('Given the api-services', () => {
@@ -21,7 +21,7 @@ describe('Given the api-services', () => {
       expect(global.fetch).toHaveBeenCalled();
       service.queryPoke(mockURL);
       expect(global.fetch).toHaveBeenCalled();
-      service.addPoke(mockURL, MOCK_POKE);
+      service.addPoke(mockURL, MOCK_POKE_EMPTY);
       expect(global.fetch).toHaveBeenCalled();
       service.removePoke(mockURL);
       expect(global.fetch).toHaveBeenCalled();

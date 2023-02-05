@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { FavoriteIcon } from './favorite.icon';
 import { StateStructure, UsePoke } from '../../hooks/use.poke';
 import { AppContext } from '../../context/app.context';
-import { MOCK_POKE } from '../../__mocks__/mock';
+import { MOCK_POKE_EMPTY } from '../../__mocks__/mock';
 import { Pokemon } from '../../models/pokemon';
 
 // BAD jest.mock('../lists/my.poke.list');
@@ -14,7 +14,7 @@ describe('Given the component FavoriteIcon', () => {
     let elements: HTMLElement[];
     const context = {} as UsePoke;
     const mockPoke = {
-      ...MOCK_POKE,
+      ...MOCK_POKE_EMPTY,
       id: 1,
       name: 'Snorlax',
     };
