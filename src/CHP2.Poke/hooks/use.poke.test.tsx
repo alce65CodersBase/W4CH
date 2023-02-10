@@ -55,13 +55,13 @@ const Test = () => {
   const { state, favorites, changeFavorites, setDetail } = usePoke();
 
   const detailPoke = () => {
-    const origin = '.poke-list__list';
+    const origin = 'home';
     const pokeId = 1;
     setDetail(origin, pokeId);
   };
 
   const detailFavorite = () => {
-    const origin = '.my-poke-list__list';
+    const origin = 'favorites';
     const pokeId = 1;
     setDetail(origin, pokeId);
   };
