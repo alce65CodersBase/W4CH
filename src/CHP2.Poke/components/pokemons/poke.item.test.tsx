@@ -17,7 +17,9 @@ describe('Given "PokeItem" component', () => {
       render(
         <AppContext.Provider value={context}>
           <Router>
-            <PokeItem poke={MOCK_POKE_FULL} source="any"></PokeItem>
+            <PokeItem poke={MOCK_POKE_FULL} source="home">
+              <></>
+            </PokeItem>
           </Router>
         </AppContext.Provider>
       );
@@ -66,7 +68,9 @@ describe('Given "PokeItem" component', () => {
       render(
         <AppContext.Provider value={context}>
           <Router>
-            <PokeItem poke={mockPoke} source="any"></PokeItem>
+            <PokeItem poke={mockPoke} source="home">
+              <></>
+            </PokeItem>
           </Router>
         </AppContext.Provider>
       );
@@ -90,7 +94,9 @@ describe('Given "PokeItem" component', () => {
       render(
         <AppContext.Provider value={context}>
           <Router>
-            <PokeItem poke={mockPoke} source="any"></PokeItem>
+            <PokeItem poke={mockPoke} source="home">
+              <></>
+            </PokeItem>
           </Router>
         </AppContext.Provider>
       );

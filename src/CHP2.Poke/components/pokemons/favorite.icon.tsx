@@ -1,8 +1,12 @@
 import { useState, useContext, SyntheticEvent } from 'react';
 import { AppContext } from '../../context/app.context';
-// TEMP import { consoleDebug } from '../../../lib/debug';
+import { consoleDebug } from '../../../lib/debug';
 
-export function FavoriteIcon({ pokeId }: { pokeId: number }) {
+type FavoriteIconProps = {
+  pokeId: number;
+  source: 'home' | 'favorites';
+};
+export function FavoriteIcon({ pokeId, source }: FavoriteIconProps) {
   const { favorites, changeFavorites } = useContext(AppContext);
 
   let iconType = favorites.find((item) => Number(item.id) === Number(pokeId))
@@ -17,13 +21,9 @@ export function FavoriteIcon({ pokeId }: { pokeId: number }) {
     setIconClassList(`icon--score ${iconType} fa-heart`);
     await changeFavorites(pokeId);
 
-    // TEMP let favoritesList: any | null = null;
-    // if (document.querySelector('.my-poke-list')) {
-    //   favoritesList = new MyPokeList('.my-poke-list', newState);
-    // }
-
-    // const target = favoritesList ? 'In Favorites page' : 'In Other page';
-    // consoleDebug('Favorite state changed' + target);
+    const target =
+      source === 'favorites' ? 'In Favorites page' : 'In Other page';
+    consoleDebug('Favorite state changed' + target);
   };
 
   return (

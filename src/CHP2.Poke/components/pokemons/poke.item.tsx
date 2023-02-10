@@ -1,7 +1,6 @@
 import { useContext, SyntheticEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Sprites } from '../../models/pokemon';
-import { FavoriteIcon } from './favorite.icon';
 import { AppContext } from '../../context/app.context';
 
 type PokeItemStructure = {
@@ -12,16 +11,17 @@ type PokeItemStructure = {
 
 type PokeItemProps = {
   poke: PokeItemStructure;
-  source: string;
+  source: 'home' | 'favorites';
+  children: globalThis.JSX.Element;
 };
-export function PokeItem({ poke, source }: PokeItemProps) {
+export function PokeItem({ poke, source, children }: PokeItemProps) {
   const url = `./detail.html?id=${poke.id}&origin=${source}`;
   const { setDetail } = useContext(AppContext);
   const navigate = useNavigate();
 
   const handleDetail = (ev: SyntheticEvent) => {
     ev.preventDefault();
-    setDetail(source as string, poke.id);
+    setDetail(source, poke.id);
     navigate('/details');
   };
 
@@ -58,7 +58,7 @@ export function PokeItem({ poke, source }: PokeItemProps) {
         )}
       </a>
       <span className="poke-item__fav" id={`fav-${poke.id}`} data-id={poke.id}>
-        <FavoriteIcon pokeId={poke.id}></FavoriteIcon>
+        {children}
       </span>
     </li>
   );
