@@ -7,7 +7,6 @@ import * as service from '../services/repository/poke.repo';
 import { PokeResponse } from '../services/repository/types';
 import { usePoke } from './use.poke';
 
-// Mock full module and mock part of it
 jest.mock('../services/repository/poke.repo');
 
 const fetchPoke = jest.fn().mockImplementation((url) => {
@@ -100,8 +99,8 @@ describe('Given the custom hook usePoke', () => {
       expect(fetchPoke).toHaveBeenCalled();
       expect(elements).toBeDefined();
       expect(elements[0].textContent).toBe('1118');
-      expect(elements[3].textContent).toBe('2'); // Is state.pokeData.length
-      expect(elements[4].textContent).toBe('1'); // Is state.favorites.length
+      expect(elements[3].textContent).toBe('2'); // Value is state.pokeData.length
+      expect(elements[4].textContent).toBe('1'); // Value is state.favorites.length
     });
 
     describe('When user click the buttons in the component', () => {
@@ -141,8 +140,6 @@ describe('Given the custom hook usePoke', () => {
         await act(async () => {
           fireEvent.click(buttons[3]);
         });
-        //  FROM state.pokeData = [MOCK_POKE];
-        //  setDetail(origin, pokeId)): 'id': MOCK_POKE.id
       });
 
       test('Then button 5 should be used for setDetail from favorites', async () => {
@@ -150,8 +147,6 @@ describe('Given the custom hook usePoke', () => {
         await act(async () => {
           fireEvent.click(buttons[4]);
         });
-        // FROM [MOCK_POKE];
-        // setDetail(origin, pokeId)): 'id': MOCK_POKE.id
       });
     });
   });

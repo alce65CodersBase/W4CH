@@ -1,4 +1,3 @@
-import { MemoryRouter as Router } from 'react-router-dom';
 import { screen, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import HomePage from './home';
@@ -7,11 +6,7 @@ import { HomePokeList } from '../../components/lists/home.poke.list';
 jest.mock('../../components/lists/home.poke.list');
 
 describe('Given "HomePage" component', () => {
-  render(
-    <Router>
-      <HomePage></HomePage>
-    </Router>
-  );
+  render(<HomePage></HomePage>);
   const pokeElements = [
     screen.getByRole('region', { name: 'Home' }), // <h2>
   ];
