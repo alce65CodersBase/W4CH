@@ -9,7 +9,7 @@ import { Pokemon } from '../../models/pokemon';
 // BAD jest.mock('../lists/my.poke.list');
 
 describe('Given the component FavoriteIcon', () => {
-  let renderComponent: (_n?: number) => void;
+  let renderComponent: (_n?: number, _source?: 'home' | 'favorites') => void;
   describe('When it will be rendered ', () => {
     let elements: HTMLElement[];
     const context = {} as UsePoke;
@@ -24,10 +24,13 @@ describe('Given the component FavoriteIcon', () => {
     } as StateStructure;
     context.changeFavorites = jest.fn().mockResolvedValue({});
     context.favorites = [favorite];
-    renderComponent = (n: number = 2) => {
+    renderComponent = (
+      n: number = 2,
+      source: 'home' | 'favorites' = 'home'
+    ) => {
       render(
         <AppContext.Provider value={context}>
-          <FavoriteIcon pokeId={n} source="home"></FavoriteIcon>
+          <FavoriteIcon pokeId={n} source={source}></FavoriteIcon>
         </AppContext.Provider>
       );
     };
@@ -51,7 +54,7 @@ describe('Given the component FavoriteIcon', () => {
 
     describe('and the icon is assigned to a non favorite pokemon', () => {
       beforeEach(() => {
-        renderComponent(1);
+        renderComponent(1, 'favorites');
         elements = [screen.getByRole('button')];
       });
       test('Then the icon regular for "Favorite" should be visible and modifiable', () => {

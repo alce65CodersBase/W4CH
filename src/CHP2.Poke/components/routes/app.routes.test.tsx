@@ -1,20 +1,19 @@
 import { act, render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { MemoryRouter as Router } from 'react-router-dom';
 import { AppRoutes } from './app.routes';
-import { mockPageTitles, items } from './mocks';
+import { items } from './mocks';
 
-const testLazyRoute = (index: number) => {
-  const title = new RegExp(mockPageTitles[index], 'i'); // Antes /Test Home/i;
-  const lazyElement = screen.getByText(title);
-  expect(lazyElement).toBeInTheDocument();
-};
+// Used with Mock de las Lazy routes
+// const testLazyRoute = (index: number) => {
+//   const title = new RegExp(mockPageTitles[index], 'i'); // Antes /Test Home/i;
+//   const lazyElement = screen.getByText(title);
+//   expect(lazyElement).toBeInTheDocument();
+// };
 
-function HomeMock() {
-  return <p>{mockPageTitles[0]}</p>;
-}
-
-jest.mock('../../pages/home/home', () => HomeMock);
-// Const FavoritesMock = () => <p>{mockPageTitles[1]}</p>;
+// Mock de las Lazy routes
+// jest.mock('../../pages/home/home', () => <p>{mockPageTitles[0]}</p>);
+// const FavoritesMock = () => <p>{mockPageTitles[1]}</p>;
 // jest.mock('../../pages/favorites/favorites', () => FavoritesMock);
 // const DetailsMock = () => <p>{mockPageTitles[2]}</p>;
 // jest.mock('../../pages/details/details', () => DetailsMock);
@@ -25,7 +24,7 @@ describe('Given AppRoutes Lazy component', () => {
   beforeEach(() => {
     lazyPaths = items.map((item) => item.path);
   });
-  describe.skip(`When we render the component
+  describe(`When we render the component
                 And the lazy route is home`, () => {
     beforeEach(async () => {
       await act(async () => {
@@ -37,11 +36,15 @@ describe('Given AppRoutes Lazy component', () => {
       });
     });
     test('Then it should display the HomePage', () => {
-      testLazyRoute(0);
+      // For lazy mocks testLazyRoute(0);
+
+      const title = /Lista de Pokemons/i;
+      const lazyElement = screen.getByText(title);
+      expect(lazyElement).toBeInTheDocument();
     });
   });
 
-  describe.skip(`When we render the component
+  describe(`When we render the component
                 And the lazy route is Favorites`, () => {
     beforeEach(async () => {
       await act(async () => {
@@ -53,10 +56,14 @@ describe('Given AppRoutes Lazy component', () => {
       });
     });
     test('Then it should display the FavoritesPage', () => {
-      testLazyRoute(1);
+      // For lazy mocks testLazyRoute(1);
+
+      const title = /Favoritos/i;
+      const lazyElement = screen.getByText(title);
+      expect(lazyElement).toBeInTheDocument();
     });
   });
-  describe.skip(`When we render the component
+  describe(`When we render the component
                 And the lazy route is Details`, () => {
     beforeEach(async () => {
       await act(async () => {
@@ -68,7 +75,11 @@ describe('Given AppRoutes Lazy component', () => {
       });
     });
     test('Then it should display the DetailsPage', () => {
-      testLazyRoute(2);
+      // For lazy mocks testLazyRoute(1);
+
+      const title = /Detalles/i;
+      const lazyElement = screen.getByText(title);
+      expect(lazyElement).toBeInTheDocument();
     });
   });
 });

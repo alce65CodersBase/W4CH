@@ -28,10 +28,7 @@ describe('Given the component PokeList', () => {
     visible for the user in the document`, () => {
       expect(elements[0]).toBeInTheDocument();
       expect(spyPokeItem).toHaveBeenCalledWith(
-        {
-          poke: mockPoke,
-          source: 'home',
-        },
+        expect.objectContaining({ poke: mockPoke, source: 'home' }),
         {}
       );
     });
@@ -48,11 +45,8 @@ describe('Given the component PokeList', () => {
     test(`Then the element of the "Poke List should be
     visible for the user in the document`, () => {
       expect(elements[0]).toBeInTheDocument();
-      expect(spyPokeItem).toHaveBeenCalledWith(
-        {
-          poke: mockPoke,
-          source: 'favorites',
-        },
+      expect(spyPokeItem).toHaveBeenLastCalledWith(
+        expect.objectContaining({ poke: mockPoke, source: 'favorites' }),
         {}
       );
     });
