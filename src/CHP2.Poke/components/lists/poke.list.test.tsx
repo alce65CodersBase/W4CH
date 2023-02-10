@@ -22,7 +22,7 @@ describe('Given the component PokeList', () => {
           <PokeList source="home" pokeData={[mockPoke]}></PokeList>
         </Router>
       );
-      elements = [screen.getByText(mockPoke.name) as HTMLElement];
+      elements = [screen.getByText(mockPoke.name)];
     });
     test(`Then the element of the "Poke List should be
     visible for the user in the document`, () => {
@@ -43,7 +43,7 @@ describe('Given the component PokeList', () => {
           <PokeList source="favorites" pokeData={[mockPoke]}></PokeList>
         </Router>
       );
-      elements = [screen.getByText(mockPoke.name) as HTMLElement];
+      elements = [screen.getByText(mockPoke.name)];
     });
     test(`Then the element of the "Poke List should be
     visible for the user in the document`, () => {

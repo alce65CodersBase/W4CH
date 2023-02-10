@@ -17,7 +17,7 @@ describe('Given the component PageText', () => {
           <PageText></PageText>
         </AppContext.Provider>
       );
-      elements = [screen.getByText(/1200/i) as HTMLElement];
+      elements = [screen.getByText(/1200/i)];
     });
     test('Then the number of "Pokemons" should be visible for the user', () => {
       expect(elements[0]).toBeInTheDocument();
@@ -37,7 +37,7 @@ describe('Given the component PageText', () => {
           <PageText></PageText>
         </AppContext.Provider>
       );
-      elements = [screen.getByText(/60/i) as HTMLElement];
+      elements = [screen.getByText(/60/i)];
     });
     test('Then the number of "Pokemons" should be visible for the user', () => {
       expect(elements[0]).toBeInTheDocument();

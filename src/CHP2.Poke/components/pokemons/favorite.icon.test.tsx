@@ -27,7 +27,7 @@ describe('Given the component FavoriteIcon', () => {
     renderComponent = (n: number = 2) => {
       render(
         <AppContext.Provider value={context}>
-          <FavoriteIcon pokeId={n}></FavoriteIcon>
+          <FavoriteIcon pokeId={n} source="home"></FavoriteIcon>
         </AppContext.Provider>
       );
     };
@@ -35,10 +35,7 @@ describe('Given the component FavoriteIcon', () => {
     describe('and the icon is assigned to a favorite pokemon', () => {
       beforeEach(() => {
         renderComponent();
-        elements = [
-          // TEMP screen.getByText(mockPoke.name) as HTMLElement
-          screen.getByRole('button') as HTMLElement,
-        ];
+        elements = [screen.getByRole('button')];
       });
       test('Then the button should be in the document', () => {
         expect(elements[0]).toBeInTheDocument();
@@ -55,7 +52,7 @@ describe('Given the component FavoriteIcon', () => {
     describe('and the icon is assigned to a non favorite pokemon', () => {
       beforeEach(() => {
         renderComponent(1);
-        elements = [screen.getByRole('button') as HTMLElement];
+        elements = [screen.getByRole('button')];
       });
       test('Then the icon regular for "Favorite" should be visible and modifiable', () => {
         const elementIcon = elements[0];
