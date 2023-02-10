@@ -5,7 +5,6 @@ import { AppContext } from '../../context/app.context';
 
 export function PokeDetail() {
   const { pokeSelected } = useContext(AppContext);
-
   const poke = pokeSelected as Pokemon;
   const showPokeData = (poke: { [key: string]: any }) => {
     const template = [];

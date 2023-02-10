@@ -15,7 +15,7 @@ export function HomePokeList() {
         <PageText></PageText>
       </h2>
       <ul className="poke-list__list">
-        <PokeList pokeData={pokeData}></PokeList>
+        <PokeList source="home" pokeData={pokeData}></PokeList>
       </ul>
       <div className="pagination">
         <Pagination></Pagination>

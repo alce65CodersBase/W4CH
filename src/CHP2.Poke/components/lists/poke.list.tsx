@@ -1,12 +1,15 @@
 import { Pokemon } from '../../models/pokemon';
 import { PokeItem } from '../pokemons/poke.item';
 
-type PokeListProps = { pokeData: Pokemon[] };
-export function PokeList({ pokeData }: PokeListProps) {
+type PokeListProps = {
+  source: 'home' | 'favorites';
+  pokeData: Pokemon[];
+};
+export function PokeList({ source, pokeData }: PokeListProps) {
   return (
     <>
       {pokeData.map((poke: Pokemon) => (
-        <PokeItem key={poke.id} poke={poke} source={''}></PokeItem>
+        <PokeItem key={poke.id} poke={poke} source={source}></PokeItem>
       ))}
     </>
   );

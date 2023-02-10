@@ -116,7 +116,7 @@ export function usePoke(): UsePoke {
 
   const setDetail = (origin: string, pokeId: number) => {
     let pokeData;
-    if (origin === '.my-poke-list__list') {
+    if (origin === 'favorites') {
       pokeData = favorites.find((poke) => poke.id === Number(pokeId));
     } else {
       pokeData = state.pokeData.find((poke) => poke.id === Number(pokeId));

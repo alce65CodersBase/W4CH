@@ -9,7 +9,7 @@ export function MyPokeList() {
       <h2>Pokemons favoritos</h2>
       <div className="my-poke-list">
         <ul className="my-poke-list__list">
-          <PokeList pokeData={favorites}></PokeList>
+          <PokeList source="favorites" pokeData={favorites}></PokeList>
         </ul>
       </div>
     </>
