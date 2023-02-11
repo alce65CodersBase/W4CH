@@ -6,8 +6,7 @@ describe('Given the component Keyboard', () => {
   describe('When it is rendered', () => {
     test('Then it should be on the screen', () => {
       render(<Keyboard />);
-      const element = screen.getByText(/keyboard/i);
-      // Alt screen.getByRole('heading', { name: 'CH4 Phone' });
+      const element = screen.getByRole('region', { name: 'keyboard' });
       expect(element).toBeInTheDocument();
     });
   });

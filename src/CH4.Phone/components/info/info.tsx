@@ -1,3 +1,7 @@
 export function Info() {
-  return <>Info</>;
+  return (
+    <section className="message" aria-label="info">
+      Calling...
+    </section>
+  );
 }

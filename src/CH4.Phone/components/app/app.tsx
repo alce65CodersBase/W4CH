@@ -7,10 +7,17 @@ export function App() {
   return (
     <div className="App">
       <h1>CH4 Phone</h1>
+      <div className="container">
       <Info></Info>
-      <Display></Display>
-      <Actions></Actions>
-      <Keyboard></Keyboard>
+      <main className="phone">
+        <Keyboard></Keyboard>
+        <Actions>
+          <Display></Display>
+        </Actions>
+      </main>
+
+      </div>
+
     </div>
   );
 }

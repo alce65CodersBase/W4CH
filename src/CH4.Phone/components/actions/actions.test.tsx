@@ -5,9 +5,12 @@ import { Actions } from './actions';
 describe('Given the component Actions', () => {
   describe('When it is rendered', () => {
     test('Then it should be on the screen', () => {
-      render(<Actions />);
-      const element = screen.getByText(/actions/i);
-      // Alt screen.getByRole('heading', { name: 'CH4 Phone' });
+      render(
+        <Actions>
+          <></>
+        </Actions>
+      );
+      const element = screen.getByRole('region', { name: 'actions' });
       expect(element).toBeInTheDocument();
     });
   });

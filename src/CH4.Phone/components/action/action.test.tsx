@@ -5,9 +5,8 @@ import { Action } from './action';
 describe('Given the component Action', () => {
   describe('When it is rendered', () => {
     test('Then it should be on the screen', () => {
-      render(<Action />);
-      const element = screen.getByText(/action/i);
-      // Alt screen.getByRole('heading', { name: 'CH4 Phone' });
+      render(<Action label="test" type="test" />);
+      const element = screen.getByRole('link', { name: 'test' });
       expect(element).toBeInTheDocument();
     });
   });

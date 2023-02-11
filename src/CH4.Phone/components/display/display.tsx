@@ -1,3 +1,7 @@
 export function Display() {
-  return <>Display</>;
+  return (
+    <section className="number" aria-label="display">
+      667359961
+    </section>
+  );
 }
