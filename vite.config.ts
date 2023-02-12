@@ -28,7 +28,7 @@ export default defineConfig({
         'CH4.List/main': resolve(__dirname, 'CH4.List', 'index.html'),
         'CH4.Phone/main': resolve(__dirname, 'CH4.Phone', 'index.html'),
         'CHP1.Series/main': resolve(__dirname, 'CHP1.Series', 'index.html'),
-        'CHP2.Poke/main': resolve(__dirname, 'CHP1.Series', 'index.html'),
+        'CHP2.Poke/main': resolve(__dirname, 'CHP2.Poke', 'index.html'),
       },
     },
   },

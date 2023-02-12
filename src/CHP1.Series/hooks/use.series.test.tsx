@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { render, screen, fireEvent } from '@testing-library/react';
+import { act, render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MOCK_SERIES } from '../mock/series';
 import { getSeries } from '../services/mock.repo';
@@ -39,14 +39,16 @@ const Test = () => {
   );
 };
 
-(getSeries as jest.Mock).mockReturnValue(mockSeries);
+(getSeries as jest.Mock).mockResolvedValue(mockSeries);
 
 describe('Given "useSeries" hook and a test component', () => {
   let elements: HTMLElement[];
-  beforeEach(() => {
-    render(<Test></Test>);
+  beforeEach(async () => {
+    await act(async () => {
+      render(<Test></Test>);
+    });
     elements = [
-      ...screen.getAllByRole('listitem'),
+      ...(await screen.findAllByRole('listitem')),
       ...screen.getAllByRole('button'),
     ];
   });
@@ -55,16 +57,18 @@ describe('Given "useSeries" hook and a test component', () => {
     test('Then getSeries should be called', () => {
       expect(getSeries).toHaveBeenCalled();
     });
-    test('Then the items in the array should be render in the document', () => {
+    test('Then the items in the array should be render in the document', async () => {
       const text = `${mockSeries[0].name} - ${mockSeries[0].score}`;
-      const element = screen.getByText(text);
+      const element = await screen.findByText(text);
       expect(element).toBeInTheDocument();
     });
   });
 
   describe('When the button score is clicked', () => {
     test('Then new score should be in the document', async () => {
-      fireEvent.click(elements[5]);
+      await act(async () => {
+        fireEvent.click(elements[5]); // Update
+      });
       expect(consoleDebug).toHaveBeenCalled();
       const text = `${mockSeries[0].name} - 5`;
       const element = await screen.findByText(text);
@@ -77,7 +81,9 @@ describe('Given "useSeries" hook and a test component', () => {
       const text = `${mockSeries[0].name} - 0`;
       const element = await screen.findByText(text);
       expect(element).toBeInTheDocument();
-      fireEvent.click(elements[4]);
+      await act(async () => {
+        fireEvent.click(elements[4]); // Delete
+      });
       const newElement = screen.queryByText(text);
       expect(newElement).toBe(null);
     });
@@ -85,7 +91,9 @@ describe('Given "useSeries" hook and a test component', () => {
 
   describe('When the button for series pending is clicked', () => {
     test('A list of series pending should be in the document', async () => {
-      fireEvent.click(elements[2]);
+      await act(async () => {
+        fireEvent.click(elements[2]); // Filter pending
+      });
       const text = `${mockSeries[0].name} - 0`;
       const element = await screen.findByText(text);
       expect(element).toBeInTheDocument();
@@ -94,7 +102,9 @@ describe('Given "useSeries" hook and a test component', () => {
 
   describe('When the button for series watched is clicked', () => {
     test('A list of series watched should be in the document', async () => {
-      fireEvent.click(elements[3]);
+      await act(async () => {
+        fireEvent.click(elements[3]); // Filter watched
+      });
       const text = `${mockSeries[1].name} - 5`;
       const element = await screen.findByText(text);
       expect(element).toBeInTheDocument();
