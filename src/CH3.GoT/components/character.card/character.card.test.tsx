@@ -4,6 +4,11 @@ import { MemoryRouter as Router } from 'react-router-dom';
 import { MOCK_KING } from '../../mocks/characters';
 
 import { CharacterCard } from './character.card';
+import { BackCard } from '../back.card/back.card';
+import { Icon } from '../icon/icon';
+
+jest.mock('../back.card/back.card');
+jest.mock('../icon/icon');
 
 describe('Given CharacterCard component', () => {
   describe('When we render the component for a live character', () => {
@@ -20,6 +25,8 @@ describe('Given CharacterCard component', () => {
       const value = `${MOCK_KING.name} ${MOCK_KING.family}`;
       const element = screen.getByText(value);
       expect(element).toBeInTheDocument();
+      expect(BackCard).toHaveBeenCalled();
+      expect(Icon).toHaveBeenCalled();
     });
     test('Then it should display the live icon', () => {
       const role = `alive`;
@@ -42,6 +49,8 @@ describe('Given CharacterCard component', () => {
       const role = `dead`;
       const element = screen.getByRole('status', { name: role });
       expect(element).toBeInTheDocument();
+      expect(BackCard).toHaveBeenCalled();
+      expect(Icon).toHaveBeenCalled();
     });
   });
 });

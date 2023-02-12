@@ -7,7 +7,7 @@ export function Communications() {
   const {
     state: { whoIsTalking },
   } = useContext(AppContext);
-  if (!whoIsTalking) throw new Error('Nobody talking');
+  if (!whoIsTalking) return <></>;
   const character: CharacterStructure = whoIsTalking;
   const html = useRef<HTMLElement>(null);
 

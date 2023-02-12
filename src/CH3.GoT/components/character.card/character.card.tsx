@@ -30,13 +30,13 @@ export function CharacterCard({
   const downIconDefinition: IconDefinition = findIconDefinition(downLookup);
 
   const state = character.isAlive ? (
-    <FontAwesomeIcon icon={upIconDefinition} role="status" aria-label="alive" />
+    <span role="status" aria-label="alive">
+      <FontAwesomeIcon icon={upIconDefinition} />
+    </span>
   ) : (
-    <FontAwesomeIcon
-      icon={downIconDefinition}
-      role="status"
-      aria-label="dead"
-    />
+    <span role="status" aria-label="dead">
+      <FontAwesomeIcon icon={downIconDefinition} />
+    </span>
   );
 
   const template = (
