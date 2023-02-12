@@ -10,6 +10,11 @@ export const useSeries = () => {
   const pendingSeries = () => series.filter((item) => item.score === 0);
   const watchedSeries = () => series.filter((item) => item.score > 0);
 
+  const loadSeries = async () => {
+    const series: Array<Series> = await getSeries();
+    setSeries(series);
+  };
+
   const updateScore = (serie: Series, newScore: number) => {
     consoleDebug('click ' + newScore);
     setSeries(
@@ -24,8 +29,7 @@ export const useSeries = () => {
   };
 
   useEffect(() => {
-    const series: Array<Series> = getSeries();
-    setSeries(series);
+    loadSeries();
   }, []);
 
   return {
