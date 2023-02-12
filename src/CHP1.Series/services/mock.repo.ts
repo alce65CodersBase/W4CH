@@ -1,3 +1,3 @@
 import { MOCK_SERIES } from '../mock/series';
 
-export const getSeries = () => MOCK_SERIES;
+export const getSeries = async () => MOCK_SERIES;
