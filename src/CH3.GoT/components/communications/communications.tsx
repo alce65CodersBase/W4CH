@@ -1,4 +1,4 @@
-import { useEffect, useRef, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { AppContext } from '../../context/context';
 import { CharacterStructure } from '../../models/character';
 import { communications, text, picture, on } from './communications.module.css';
@@ -9,21 +9,18 @@ export function Communications() {
   } = useContext(AppContext);
   if (!whoIsTalking) return <></>;
   const character: CharacterStructure = whoIsTalking;
-  const html = useRef<HTMLElement>(null);
+
+  const [classCss, setClassCss] = useState(communications);
 
   useEffect(() => {
-    html.current?.classList.toggle(on);
-  }, [html]);
+    setClassCss(communications + ' ' + on);
+  }, []);
 
   const title = 'Communications';
   const fullName = `${character.name} ${character.family}`;
   const image = `img/${character.name.toLowerCase()}.jpg`;
   return (
-    <section
-      className={communications + ' ' + on}
-      aria-label={title}
-      ref={html}
-    >
+    <section className={classCss} aria-label={title}>
       <p className={text}>{character.message}</p>
       <img className={picture} src={image} alt={fullName} />
     </section>
