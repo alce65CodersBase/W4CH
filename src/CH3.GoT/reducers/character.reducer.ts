@@ -11,7 +11,6 @@ export const characterReducer = (
   state: CharacterState,
   action: CharacterAction
 ): CharacterState => {
-  console.log('Starting reducer', action.type);
   switch (action.type) {
     case actionTypes.load: {
       const characters = action.payload as Array<CharacterStructure>;
