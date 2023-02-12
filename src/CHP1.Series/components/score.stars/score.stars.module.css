@@ -5,3 +5,7 @@
   align-items: center;
   color: rgb(108, 1, 1); */
 }
+
+.star {
+  color: inherit;
+}
