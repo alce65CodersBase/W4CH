@@ -7,8 +7,6 @@ export function Communications() {
   const {
     state: { whoIsTalking },
   } = useContext(AppContext);
-  if (!whoIsTalking) return <></>;
-  const character: CharacterStructure = whoIsTalking;
 
   const [classCss, setClassCss] = useState(communications);
 
@@ -16,6 +14,9 @@ export function Communications() {
     setClassCss(communications + ' ' + on);
   }, []);
 
+  if (!whoIsTalking) return <></>;
+
+  const character: CharacterStructure = whoIsTalking;
   const title = 'Communications';
   const fullName = `${character.name} ${character.family}`;
   const image = `img/${character.name.toLowerCase()}.jpg`;
