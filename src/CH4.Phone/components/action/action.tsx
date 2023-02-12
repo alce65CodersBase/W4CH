@@ -1,12 +1,15 @@
 type ActionProps = {
   label: string;
   type: string;
-  state?: string;
+  state?: boolean;
+  handleClick: () => void;
 };
-export function Action({ label, type, state }: ActionProps) {
+export function Action({ label, type, state, handleClick }: ActionProps) {
+  const cssClass = `${type} ${state && 'active'}`;
+
   return (
-    <a href="#" className={type + ' ' + state}>
+    <button className={cssClass} disabled={!state} onClick={handleClick}>
       {label}
-    </a>
+    </button>
   );
 }

@@ -83,7 +83,7 @@ li {
   flex-direction: column;
   align-items: center;
 }
-.actions a {
+.actions button {
   border-radius: 10px;
   padding: 20px;
   text-decoration: none;
