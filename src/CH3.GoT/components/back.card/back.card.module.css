@@ -1,0 +1,48 @@
+.overlay {
+  border-radius: 0.25rem;
+  position: absolute;
+  padding: 25px 15px;
+  top: -100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s;
+}
+
+.overlay ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.overlay li {
+  padding: 0;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+}
+
+.action {
+  background-color: #67331e;
+  color: #fff;
+  width: 80%;
+}
+
+.action:disabled {
+  background-color: rgba(103, 51, 30, 0.5);
+  color: rgba(255, 255, 255, 0.5);
+  width: 80%;
+  cursor: initial;
+}

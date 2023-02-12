@@ -1,0 +1,27 @@
+.communications {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background-color: transparent;
+  padding: 0 100px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+  right: 100vw;
+  left: -100vw;
+}
+.communications.on {
+  right: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.text {
+  font-size: 3rem;
+}
+.picture {
+  width: 70px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
