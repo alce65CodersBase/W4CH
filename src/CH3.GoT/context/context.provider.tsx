@@ -1,6 +1,6 @@
 /* globals JSX */
 import { useMemo } from 'react';
-import { useCharacters } from '../hooks/useCharacters';
+import { useCharacters } from '../hooks/use.characters';
 import { AppContext } from './context';
 
 export function AppContextProvider({ children }: { children: JSX.Element }) {

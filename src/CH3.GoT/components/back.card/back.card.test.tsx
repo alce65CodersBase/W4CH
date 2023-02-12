@@ -2,10 +2,10 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { BackCard } from './back.card';
 import { MOCK_KING } from '../../mocks/characters';
-import { useCharacters } from '../../hooks/useCharacters';
+import { useCharacters } from '../../hooks/use.characters';
 import { AppContextProvider } from '../../context/context.provider';
 
-jest.mock('../../hooks/useCharacters');
+jest.mock('../../hooks/use.characters');
 describe('Given BackCard component', () => {
   const handleDead = jest.fn();
   const handleCommunicate = jest.fn();

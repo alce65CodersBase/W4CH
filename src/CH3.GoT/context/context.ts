@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { useCharacters } from '../hooks/useCharacters';
+import { useCharacters } from '../hooks/use.characters';
 import { CharacterStructure } from '../models/character';
 import { CharacterState } from '../reducers/character.reducer';
 
