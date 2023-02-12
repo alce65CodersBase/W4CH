@@ -11,22 +11,7 @@ export type CharacterStructure = {
   kingdomYears?: number; // For King
   weapon?: string; // For Fighter
   skill?: number; // For Fighter
-  chief?: Character; // For Counselor
+  chief?: CharacterStructure; // For Counselor
   submission?: number; // For Squire
-  master?: Character; // ForSquire
+  master?: CharacterStructure; // ForSquire
 };
-
-class Character implements CharacterStructure {
-  static series = 'GoT';
-  public isAlive: boolean;
-  public message: string;
-  constructor(
-    public name: string,
-    public family: string,
-    public age: number,
-    public category: Category
-  ) {
-    this.isAlive = true;
-    this.message = '';
-  }
-}

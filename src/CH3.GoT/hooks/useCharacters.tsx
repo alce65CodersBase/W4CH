@@ -1,11 +1,12 @@
 import { useReducer, useCallback } from 'react';
-import { MOCK_DATA_JSON } from '../mocks/characters';
+
 import { CharacterStructure } from '../models/character';
 import * as ac from '../reducers/action.creator';
 import {
   characterReducer,
   CharacterState,
 } from '../reducers/character.reducer';
+import { getCharactersSync } from '../services/repository/mock.repo';
 
 export function useCharacters() {
   const initialState: CharacterState = {
@@ -15,7 +16,7 @@ export function useCharacters() {
   const [state, dispatch] = useReducer(characterReducer, initialState);
 
   const handleLoad = useCallback(() => {
-    const newData = MOCK_DATA_JSON as Array<CharacterStructure>;
+    const newData = getCharactersSync();
     dispatch(ac.loadCharacterAction(newData));
   }, []);
 
