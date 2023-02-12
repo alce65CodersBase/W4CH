@@ -13,13 +13,12 @@ const mockContext: UsePhone = {
 };
 
 const renderedElements = (callingStatus: string) => {
+  const context = {
+    ...mockContext,
+    isCalling: callingStatus,
+  };
   render(
-    <AppContext.Provider
-      value={{
-        ...mockContext,
-        isCalling: callingStatus,
-      }}
-    >
+    <AppContext.Provider value={context}>
       <Actions>
         <></>
       </Actions>

@@ -8,14 +8,11 @@ describe('Given the component Display', () => {
   describe('When it is rendered', () => {
     test('Then the phone number should be on the screen', () => {
       const mockNumber = '666666666';
+      const context = {
+        phoneNumber: mockNumber,
+      } as UsePhone;
       render(
-        <AppContext.Provider
-          value={
-            {
-              phoneNumber: mockNumber,
-            } as UsePhone
-          }
-        >
+        <AppContext.Provider value={context}>
           <Display />
         </AppContext.Provider>
       );

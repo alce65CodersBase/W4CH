@@ -6,15 +6,12 @@ import { UsePhone } from '../../hooks/use.phone';
 
 const mockNumber = '666666666';
 const renderedElements = (isCalling: string) => {
+  const context = {
+    isCalling,
+    phoneNumber: mockNumber,
+  } as UsePhone;
   render(
-    <AppContext.Provider
-      value={
-        {
-          isCalling,
-          phoneNumber: mockNumber,
-        } as UsePhone
-      }
-    >
+    <AppContext.Provider value={context}>
       <Info />
     </AppContext.Provider>
   );
